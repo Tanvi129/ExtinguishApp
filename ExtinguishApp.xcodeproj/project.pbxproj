@@ -21,6 +21,7 @@
 		2D1938602A1A749B00E40D88 /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D19385F2A1A749B00E40D88 /* TaskModel.swift */; };
 		2D1938632A1A76BE00E40D88 /* DateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1938622A1A76BE00E40D88 /* DateViewModel.swift */; };
 		2D1938672A1A7F6200E40D88 /* View-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1938662A1A7F6200E40D88 /* View-Extension.swift */; };
+		2D1938692A1AAD1300E40D88 /* StaticData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1938682A1AAD1300E40D88 /* StaticData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		2D19385F2A1A749B00E40D88 /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
 		2D1938622A1A76BE00E40D88 /* DateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateViewModel.swift; sourceTree = "<group>"; };
 		2D1938662A1A7F6200E40D88 /* View-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View-Extension.swift"; sourceTree = "<group>"; };
+		2D1938682A1AAD1300E40D88 /* StaticData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 				2D19385B2A1A745800E40D88 /* DistributorDetailsModel.swift */,
 				2D19385D2A1A748C00E40D88 /* SubtaskModel.swift */,
 				2D19385F2A1A749B00E40D88 /* TaskModel.swift */,
+				2D1938682A1AAD1300E40D88 /* StaticData.swift */,
 			);
 			path = DataModels;
 			sourceTree = "<group>";
@@ -234,6 +237,7 @@
 				2D1938672A1A7F6200E40D88 /* View-Extension.swift in Sources */,
 				2D19383F2A1A733800E40D88 /* ExtinguishAppApp.swift in Sources */,
 				2D1938582A1A741100E40D88 /* ManagerDetailsModel.swift in Sources */,
+				2D1938692A1AAD1300E40D88 /* StaticData.swift in Sources */,
 				2D1938532A1A73B400E40D88 /* MTaskSummary.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

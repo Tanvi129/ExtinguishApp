@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+var isAssigned = true
 struct MTaskSummary: View {
     @StateObject var appointmentViewModel: DateViewModel = DateViewModel()
 
@@ -18,7 +18,7 @@ struct MTaskSummary: View {
     @State var filterMode: String = "none"
     
     @State var selectedMonth = DateViewModel().currentMonthString()
-   
+    @State var taskList = DataModel().getTaskList()
     
 
     
@@ -44,7 +44,11 @@ struct MTaskSummary: View {
                     FilterButton(text: "Meeting", selected: $filterMode)
                 }
                     ScrollView(.vertical) {
-                        
+                        LazyVStack(spacing: 10){
+                            ForEach(taskList.indices, id: \.self){
+                                task in TaskCard()
+                            }
+                        }
                         
                     }
                
@@ -53,6 +57,7 @@ struct MTaskSummary: View {
           
            
             }
+        
             
         
        
@@ -173,6 +178,75 @@ struct FilterButton: View {
                 .frame(minWidth: 110, minHeight: 50)
                 .background(selected == text ? .black : Color("Primary"))
                 .cornerRadius(60)
+        }
+    }
+}
+
+struct TaskCard: View {
+    var color : Color = isAssigned ? Color("Primary") : .black
+    var body: some View {
+        HStack(spacing: 30 ){
+            VStack{
+                Circle()
+                    .fill(isAssigned ? .black : .clear)
+                    .frame(width: 15, height: 15)
+                    .background(
+                    
+                        Circle()
+                            .stroke(.black,lineWidth: 1)
+                            .padding(-3)
+                    )
+                    .scaleEffect(isAssigned ? 0.8 : 1)
+//
+                
+                
+                Rectangle()
+                    .fill(.black)
+                    .frame(width: 3)
+                    
+            }
+            ZStack (alignment: .leading){
+               
+                VStack(alignment: .leading, spacing: -1.0){
+                    HStack{
+                        
+                        Text("John Wick | Company")
+                       
+                    }
+                    .frame(width: 200)
+                    .padding(.leading, 40)
+                    .padding(20).background(color)
+                       
+                    HStack{
+                        Tag(text: "10/3/23", color: color)
+                        Tag(text: "10/3/23", color: color)
+                    }
+                    .frame(width: 200)
+                    .padding(.leading, 40)
+                    .padding(20)
+                    .background(Color("Background"))
+                    
+                }
+                Image("MProfile")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 50, height: 50)
+                    .clipShape(Circle())
+                    .padding()
+            }
+        }
+    }
+    private struct Tag: View {
+        var text: String
+        var color : Color
+        var body: some View {
+            Text(text)
+                .font(.caption2.weight(.semibold))
+                .padding(.horizontal, 5)
+                .padding(.vertical, 5)
+                .background(color)
+                .foregroundColor(Color.white)
+                .cornerRadius(5)
         }
     }
 }

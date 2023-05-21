@@ -7,16 +7,26 @@
 
 import Foundation
 
-struct Task{
+struct Task {
     var taskID : String
-    var Name : String
-    var managerAssigned : Manager?
-    var auditorAssigned : Auditor?
+    var name : String
     var date : Date
-    var sessionStart : String
-    var sessionEnd : String
+    var location : String
+    var taskStatus : Status
+    var auditorAssigned : Auditor?
+    var startTime : String
+    var endTime : String
+//    var expiredFrom : String
     var distributorDetails : DistributorDetails
     var companyDetails : CompanyDetails
-    var subtaskList : [Subtask]?
+    var subtask : [Subtask]?
+    var proof : [String]?
     
+    
+}
+
+enum Status {
+    case completed
+    case inProgress
+    case unassigned
 }
