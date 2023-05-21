@@ -11,6 +11,14 @@
 		2D1938412A1A733800E40D88 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1938402A1A733800E40D88 /* ContentView.swift */; };
 		2D1938432A1A733900E40D88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D1938422A1A733900E40D88 /* Assets.xcassets */; };
 		2D1938462A1A733900E40D88 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D1938452A1A733900E40D88 /* Preview Assets.xcassets */; };
+		2D1938512A1A739500E40D88 /* ATaskSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1938502A1A739500E40D88 /* ATaskSummary.swift */; };
+		2D1938532A1A73B400E40D88 /* MTaskSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1938522A1A73B400E40D88 /* MTaskSummary.swift */; };
+		2D1938562A1A73FC00E40D88 /* AuditorDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1938552A1A73FC00E40D88 /* AuditorDetailsModel.swift */; };
+		2D1938582A1A741100E40D88 /* ManagerDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1938572A1A741100E40D88 /* ManagerDetailsModel.swift */; };
+		2D19385A2A1A742400E40D88 /* CompanyDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1938592A1A742400E40D88 /* CompanyDetailsModel.swift */; };
+		2D19385C2A1A745800E40D88 /* DistributorDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D19385B2A1A745800E40D88 /* DistributorDetailsModel.swift */; };
+		2D19385E2A1A748C00E40D88 /* SubtaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D19385D2A1A748C00E40D88 /* SubtaskModel.swift */; };
+		2D1938602A1A749B00E40D88 /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D19385F2A1A749B00E40D88 /* TaskModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +27,14 @@
 		2D1938402A1A733800E40D88 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2D1938422A1A733900E40D88 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2D1938452A1A733900E40D88 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		2D1938502A1A739500E40D88 /* ATaskSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATaskSummary.swift; sourceTree = "<group>"; };
+		2D1938522A1A73B400E40D88 /* MTaskSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTaskSummary.swift; sourceTree = "<group>"; };
+		2D1938552A1A73FC00E40D88 /* AuditorDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditorDetailsModel.swift; sourceTree = "<group>"; };
+		2D1938572A1A741100E40D88 /* ManagerDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerDetailsModel.swift; sourceTree = "<group>"; };
+		2D1938592A1A742400E40D88 /* CompanyDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyDetailsModel.swift; sourceTree = "<group>"; };
+		2D19385B2A1A745800E40D88 /* DistributorDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistributorDetailsModel.swift; sourceTree = "<group>"; };
+		2D19385D2A1A748C00E40D88 /* SubtaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtaskModel.swift; sourceTree = "<group>"; };
+		2D19385F2A1A749B00E40D88 /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +67,8 @@
 		2D19383D2A1A733800E40D88 /* ExtinguishApp */ = {
 			isa = PBXGroup;
 			children = (
+				2D1938542A1A73BC00E40D88 /* DataModels */,
+				2D19384C2A1A735300E40D88 /* Screens */,
 				2D19383E2A1A733800E40D88 /* ExtinguishAppApp.swift */,
 				2D1938402A1A733800E40D88 /* ContentView.swift */,
 				2D1938422A1A733900E40D88 /* Assets.xcassets */,
@@ -65,6 +83,52 @@
 				2D1938452A1A733900E40D88 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		2D19384C2A1A735300E40D88 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				2D19384F2A1A737900E40D88 /* General */,
+				2D19384E2A1A736C00E40D88 /* Manager */,
+				2D19384D2A1A735F00E40D88 /* Auditor */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		2D19384D2A1A735F00E40D88 /* Auditor */ = {
+			isa = PBXGroup;
+			children = (
+				2D1938502A1A739500E40D88 /* ATaskSummary.swift */,
+			);
+			path = Auditor;
+			sourceTree = "<group>";
+		};
+		2D19384E2A1A736C00E40D88 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				2D1938522A1A73B400E40D88 /* MTaskSummary.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		2D19384F2A1A737900E40D88 /* General */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = General;
+			sourceTree = "<group>";
+		};
+		2D1938542A1A73BC00E40D88 /* DataModels */ = {
+			isa = PBXGroup;
+			children = (
+				2D1938552A1A73FC00E40D88 /* AuditorDetailsModel.swift */,
+				2D1938572A1A741100E40D88 /* ManagerDetailsModel.swift */,
+				2D1938592A1A742400E40D88 /* CompanyDetailsModel.swift */,
+				2D19385B2A1A745800E40D88 /* DistributorDetailsModel.swift */,
+				2D19385D2A1A748C00E40D88 /* SubtaskModel.swift */,
+				2D19385F2A1A749B00E40D88 /* TaskModel.swift */,
+			);
+			path = DataModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +202,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D1938412A1A733800E40D88 /* ContentView.swift in Sources */,
+				2D19385E2A1A748C00E40D88 /* SubtaskModel.swift in Sources */,
+				2D1938602A1A749B00E40D88 /* TaskModel.swift in Sources */,
+				2D19385A2A1A742400E40D88 /* CompanyDetailsModel.swift in Sources */,
+				2D19385C2A1A745800E40D88 /* DistributorDetailsModel.swift in Sources */,
+				2D1938562A1A73FC00E40D88 /* AuditorDetailsModel.swift in Sources */,
+				2D1938512A1A739500E40D88 /* ATaskSummary.swift in Sources */,
 				2D19383F2A1A733800E40D88 /* ExtinguishAppApp.swift in Sources */,
+				2D1938582A1A741100E40D88 /* ManagerDetailsModel.swift in Sources */,
+				2D1938532A1A73B400E40D88 /* MTaskSummary.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
