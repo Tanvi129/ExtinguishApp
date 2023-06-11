@@ -22,6 +22,7 @@
 		2D1938632A1A76BE00E40D88 /* DateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1938622A1A76BE00E40D88 /* DateViewModel.swift */; };
 		2D1938672A1A7F6200E40D88 /* View-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1938662A1A7F6200E40D88 /* View-Extension.swift */; };
 		2D1938692A1AAD1300E40D88 /* StaticData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1938682A1AAD1300E40D88 /* StaticData.swift */; };
+		2D19386C2A35A5A200E40D88 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D19386B2A35A5A200E40D88 /* CustomSegmentedControl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		2D1938622A1A76BE00E40D88 /* DateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateViewModel.swift; sourceTree = "<group>"; };
 		2D1938662A1A7F6200E40D88 /* View-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View-Extension.swift"; sourceTree = "<group>"; };
 		2D1938682A1AAD1300E40D88 /* StaticData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticData.swift; sourceTree = "<group>"; };
+		2D19386B2A35A5A200E40D88 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 		2D19383D2A1A733800E40D88 /* ExtinguishApp */ = {
 			isa = PBXGroup;
 			children = (
+				2D19386A2A35A58300E40D88 /* CustomElements */,
 				2D1938652A1A7F4B00E40D88 /* Extensions */,
 				2D1938612A1A76A100E40D88 /* ViewModels */,
 				2D1938542A1A73BC00E40D88 /* DataModels */,
@@ -156,6 +159,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		2D19386A2A35A58300E40D88 /* CustomElements */ = {
+			isa = PBXGroup;
+			children = (
+				2D19386B2A35A5A200E40D88 /* CustomSegmentedControl.swift */,
+			);
+			path = CustomElements;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -233,6 +244,7 @@
 				2D19385C2A1A745800E40D88 /* DistributorDetailsModel.swift in Sources */,
 				2D1938562A1A73FC00E40D88 /* AuditorDetailsModel.swift in Sources */,
 				2D1938632A1A76BE00E40D88 /* DateViewModel.swift in Sources */,
+				2D19386C2A35A5A200E40D88 /* CustomSegmentedControl.swift in Sources */,
 				2D1938512A1A739500E40D88 /* ATaskSummary.swift in Sources */,
 				2D1938672A1A7F6200E40D88 /* View-Extension.swift in Sources */,
 				2D19383F2A1A733800E40D88 /* ExtinguishAppApp.swift in Sources */,
