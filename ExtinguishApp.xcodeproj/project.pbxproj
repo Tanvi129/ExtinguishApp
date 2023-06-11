@@ -23,6 +23,7 @@
 		2D1938672A1A7F6200E40D88 /* View-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1938662A1A7F6200E40D88 /* View-Extension.swift */; };
 		2D1938692A1AAD1300E40D88 /* StaticData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1938682A1AAD1300E40D88 /* StaticData.swift */; };
 		2D19386C2A35A5A200E40D88 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D19386B2A35A5A200E40D88 /* CustomSegmentedControl.swift */; };
+		2D19386E2A35BED300E40D88 /* MTaskDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D19386D2A35BED300E40D88 /* MTaskDetail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		2D1938662A1A7F6200E40D88 /* View-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View-Extension.swift"; sourceTree = "<group>"; };
 		2D1938682A1AAD1300E40D88 /* StaticData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticData.swift; sourceTree = "<group>"; };
 		2D19386B2A35A5A200E40D88 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
+		2D19386D2A35BED300E40D88 /* MTaskDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTaskDetail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				2D1938522A1A73B400E40D88 /* MTaskSummary.swift */,
+				2D19386D2A35BED300E40D88 /* MTaskDetail.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -248,6 +251,7 @@
 				2D1938512A1A739500E40D88 /* ATaskSummary.swift in Sources */,
 				2D1938672A1A7F6200E40D88 /* View-Extension.swift in Sources */,
 				2D19383F2A1A733800E40D88 /* ExtinguishAppApp.swift in Sources */,
+				2D19386E2A35BED300E40D88 /* MTaskDetail.swift in Sources */,
 				2D1938582A1A741100E40D88 /* ManagerDetailsModel.swift in Sources */,
 				2D1938692A1AAD1300E40D88 /* StaticData.swift in Sources */,
 				2D1938532A1A73B400E40D88 /* MTaskSummary.swift in Sources */,
