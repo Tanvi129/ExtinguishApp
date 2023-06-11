@@ -16,7 +16,7 @@ struct ATaskSummary: View {
     var body: some View {
         
         NavigationStack {
-            VStack{
+            VStack(){
                 HStack{
                     Text("Task Summary")
                         .font(.largeTitle.bold())
@@ -34,23 +34,15 @@ struct ATaskSummary: View {
                     }
 
                 }
-//                HStack{
-//                    ForEach(state.indices, id: \.self){ index in
-//                        Button {
-//                            selection = index
-//                            print(selection)
-//                        } label: {
-//                            Text(state[index]).font(.title3).foregroundColor(.black)
-//                        }
 //
-//
-//                    }
-//                }
-//
-//                .padding()
-//                .background(Color("Background"))
-//                .cornerRadius(100)
-                CustomSegmentedControl(preselectedIndex: $selection, options: state)
+                CustomSegmentedControl(preselectedIndex: $selection, options: state).padding(.bottom , 24)
+                ScrollView(.vertical){
+                    LazyVStack(spacing : 20){
+                        ForEach(0...10, id:\.self){
+                            index in ATaskCard(company: "Cipla" , taskID: "ANAMJJJJ")
+                        }
+                    }
+                }
                 Spacer()
             }
             .padding(24)
@@ -62,6 +54,52 @@ struct ATaskSummary: View {
 struct ATaskSummary_Previews: PreviewProvider {
     static var previews: some View {
         ATaskSummary()
+    }
+}
+
+struct ATaskCard: View {
+    @State var company : String
+    @State var taskID : String
+    var body: some View {
+        VStack(alignment : .center){
+            VStack(alignment : .leading){
+                Text(company).font(.title2.bold())
+                Text("Task ID - \(taskID)")
+            }
+            .padding()
+            .frame(maxWidth: .infinity , alignment: .leading)
+            .background(Color("Primary"))
+            
+            VStack(alignment : .leading, spacing: 10){
+                HStack(){
+                    Image(systemName: "calendar")
+                    Text("Tuesday, April 8")
+                }
+                HStack{
+                    Image(systemName: "clock.fill")
+                    Text("6:00 PM - 7:00 PM")
+                }
+                HStack{
+                    Button{
+                        
+                    }label: {
+                        Text("Reschedule").foregroundColor(.red)
+                    }
+                    Spacer()
+                    Button{
+                        
+                    }label: {
+                        Text("Completed")
+                    }
+                }.padding(.horizontal, 24)
+                    .padding(.vertical, 8)
+            } .padding()
+               
+        }
+        .frame(maxWidth: .infinity , alignment: .leading)
+        .background(Color("Background"))
+        .cornerRadius(15)
+        
     }
 }
 
