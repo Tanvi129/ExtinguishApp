@@ -34,7 +34,6 @@ struct MProfile: View {
                             
                         }label: {
                             Image(systemName: "arrow.right").frame( width : 50, height: 50).foregroundColor(.black).font(.system(size: 25))
-                                .frame(width: 32.0, height: 32.0)
                         }
                     }
                 .padding(8)
