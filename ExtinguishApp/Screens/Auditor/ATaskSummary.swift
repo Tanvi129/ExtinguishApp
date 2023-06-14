@@ -11,7 +11,7 @@ struct ATaskSummary: View {
     @State private var selection = 0
     
 
-    var state = ["Inprogress","Upcoming","Completed"]
+    var state = ["Upcoming","Completed"]
     
     var body: some View {
         
