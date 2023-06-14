@@ -25,6 +25,11 @@
 		2D19386C2A35A5A200E40D88 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D19386B2A35A5A200E40D88 /* CustomSegmentedControl.swift */; };
 		2D19386E2A35BED300E40D88 /* MTaskDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D19386D2A35BED300E40D88 /* MTaskDetail.swift */; };
 		2D1938702A398B1200E40D88 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D19386F2A398B1200E40D88 /* Login.swift */; };
+		2D1938722A39B33200E40D88 /* MProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1938712A39B33200E40D88 /* MProfile.swift */; };
+		2D1938742A39B34200E40D88 /* AProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1938732A39B34200E40D88 /* AProfile.swift */; };
+		2D1938762A39B36000E40D88 /* ATaskDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1938752A39B36000E40D88 /* ATaskDetail.swift */; };
+		2D1938782A3A209F00E40D88 /* SubtaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1938772A3A209F00E40D88 /* SubtaskView.swift */; };
+		2D19387A2A3A23D600E40D88 /* ProfileItemCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1938792A3A23D600E40D88 /* ProfileItemCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +52,11 @@
 		2D19386B2A35A5A200E40D88 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		2D19386D2A35BED300E40D88 /* MTaskDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTaskDetail.swift; sourceTree = "<group>"; };
 		2D19386F2A398B1200E40D88 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		2D1938712A39B33200E40D88 /* MProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MProfile.swift; sourceTree = "<group>"; };
+		2D1938732A39B34200E40D88 /* AProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AProfile.swift; sourceTree = "<group>"; };
+		2D1938752A39B36000E40D88 /* ATaskDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATaskDetail.swift; sourceTree = "<group>"; };
+		2D1938772A3A209F00E40D88 /* SubtaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtaskView.swift; sourceTree = "<group>"; };
+		2D1938792A3A23D600E40D88 /* ProfileItemCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileItemCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +124,8 @@
 			isa = PBXGroup;
 			children = (
 				2D1938502A1A739500E40D88 /* ATaskSummary.swift */,
+				2D1938732A39B34200E40D88 /* AProfile.swift */,
+				2D1938752A39B36000E40D88 /* ATaskDetail.swift */,
 			);
 			path = Auditor;
 			sourceTree = "<group>";
@@ -123,6 +135,7 @@
 			children = (
 				2D1938522A1A73B400E40D88 /* MTaskSummary.swift */,
 				2D19386D2A35BED300E40D88 /* MTaskDetail.swift */,
+				2D1938712A39B33200E40D88 /* MProfile.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -169,6 +182,8 @@
 			isa = PBXGroup;
 			children = (
 				2D19386B2A35A5A200E40D88 /* CustomSegmentedControl.swift */,
+				2D1938772A3A209F00E40D88 /* SubtaskView.swift */,
+				2D1938792A3A23D600E40D88 /* ProfileItemCard.swift */,
 			);
 			path = CustomElements;
 			sourceTree = "<group>";
@@ -255,8 +270,13 @@
 				2D1938672A1A7F6200E40D88 /* View-Extension.swift in Sources */,
 				2D19383F2A1A733800E40D88 /* ExtinguishAppApp.swift in Sources */,
 				2D19386E2A35BED300E40D88 /* MTaskDetail.swift in Sources */,
+				2D1938722A39B33200E40D88 /* MProfile.swift in Sources */,
+				2D19387A2A3A23D600E40D88 /* ProfileItemCard.swift in Sources */,
+				2D1938762A39B36000E40D88 /* ATaskDetail.swift in Sources */,
 				2D1938582A1A741100E40D88 /* ManagerDetailsModel.swift in Sources */,
 				2D1938692A1AAD1300E40D88 /* StaticData.swift in Sources */,
+				2D1938782A3A209F00E40D88 /* SubtaskView.swift in Sources */,
+				2D1938742A39B34200E40D88 /* AProfile.swift in Sources */,
 				2D1938532A1A73B400E40D88 /* MTaskSummary.swift in Sources */,
 				2D1938702A398B1200E40D88 /* Login.swift in Sources */,
 			);
