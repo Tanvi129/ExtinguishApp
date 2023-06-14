@@ -24,6 +24,7 @@
 		2D1938692A1AAD1300E40D88 /* StaticData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1938682A1AAD1300E40D88 /* StaticData.swift */; };
 		2D19386C2A35A5A200E40D88 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D19386B2A35A5A200E40D88 /* CustomSegmentedControl.swift */; };
 		2D19386E2A35BED300E40D88 /* MTaskDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D19386D2A35BED300E40D88 /* MTaskDetail.swift */; };
+		2D1938702A398B1200E40D88 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D19386F2A398B1200E40D88 /* Login.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		2D1938682A1AAD1300E40D88 /* StaticData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticData.swift; sourceTree = "<group>"; };
 		2D19386B2A35A5A200E40D88 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		2D19386D2A35BED300E40D88 /* MTaskDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTaskDetail.swift; sourceTree = "<group>"; };
+		2D19386F2A398B1200E40D88 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 		2D19384F2A1A737900E40D88 /* General */ = {
 			isa = PBXGroup;
 			children = (
+				2D19386F2A398B1200E40D88 /* Login.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 				2D1938582A1A741100E40D88 /* ManagerDetailsModel.swift in Sources */,
 				2D1938692A1AAD1300E40D88 /* StaticData.swift in Sources */,
 				2D1938532A1A73B400E40D88 /* MTaskSummary.swift in Sources */,
+				2D1938702A398B1200E40D88 /* Login.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

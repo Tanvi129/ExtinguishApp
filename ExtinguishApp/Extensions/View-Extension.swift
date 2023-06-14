@@ -11,6 +11,22 @@ extension View {
     func roundedCorner(_ radius: CGFloat, corners: UIRectCorner) -> some View {
         clipShape(RoundedCorner(radius: radius, corners: corners) )
     }
+   
+    func hCenter()-> some View{
+        self
+            .frame(maxWidth: .infinity, alignment: .center)
+    }
+    
+    func hTrailing()-> some View{
+        self
+            .frame(maxWidth: .infinity, alignment: .trailing)
+    }
+    
+    func hLeading()-> some View{
+        self
+            .frame(maxWidth: .infinity, alignment: .leading)
+    }
+    
 }
 
 struct RoundedCorner: Shape {
