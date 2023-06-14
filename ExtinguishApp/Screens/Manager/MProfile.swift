@@ -26,20 +26,22 @@ struct MProfile: View {
                 ProfileItemCard(title: "Email ID", value: "MrJethalal@gmail.com")
                 ProfileItemCard(title: "Contact Number:", value: "9557146955")
                 ProfileItemCard(title: "Residential Address", value: "Lane No 7, D Block , Aman Vihar, Dehradun, Uttarakhand")
-                
+                Button {
+                    
+                }label: {
                     HStack(){
-                        Text("Change Password").font(.title2.weight(.semibold))
+                        Text("Change Password").font(.title2.weight(.semibold)).foregroundColor(.black)
                         Spacer()
-                        Button{
-                            
-                        }label: {
-                            Image(systemName: "arrow.right").frame( width : 50, height: 50).foregroundColor(.black).font(.system(size: 25))
-                        }
+                        
+                        Image(systemName: "arrow.right").frame( width : 50, height: 50).foregroundColor(.black).font(.system(size: 25))
+                        
                     }
-                .padding(8)
+                    .padding(8)
                     .frame(maxWidth: .infinity , alignment: .leading).background(Color("Primary"))
-                .cornerRadius(15)
-            }
+                    .cornerRadius(15)
+                }
+                }
+                    
            
             Spacer()
         }.padding(24)
