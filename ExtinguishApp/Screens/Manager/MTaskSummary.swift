@@ -39,9 +39,9 @@ struct MTaskSummary: View {
                 
                    
                 HStack(alignment: .center, spacing: 10) {
-                    FilterButton(text: "OPD", selected: $filterMode)
-                    FilterButton(text: "Operation", selected: $filterMode)
-                    FilterButton(text: "Meeting", selected: $filterMode)
+                    FilterButton(text: "Completed", selected: $filterMode)
+                    FilterButton(text: "Unassigned", selected: $filterMode)
+                    FilterButton(text: "InProgress", selected: $filterMode)
                 }
                     ScrollView(.vertical) {
                         LazyVStack(spacing: 10){
@@ -174,7 +174,7 @@ struct FilterButton: View {
             Text(text)
                 .font(.subheadline.weight(.semibold))
                 .foregroundColor(selected == text ? .white : .black)
-                .padding(.horizontal, 20)
+                .padding(.horizontal, 10)
                 .frame(minWidth: 110, minHeight: 50)
                 .background(selected == text ? .black : Color("Primary"))
                 .cornerRadius(60)

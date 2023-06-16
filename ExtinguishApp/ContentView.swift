@@ -10,37 +10,37 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
        
-        TabView {
-           MTaskSummary()
-             .tabItem {
-                Image(systemName: "calendar")
-                Text("Task Summary")
-              }
-            MAuditorList()
-              .tabItem {
-                 Image(systemName: "figure.stand")
-                 Text("HR")
-               }
-            MProfile()
-              .tabItem {
-                 Image(systemName: "person.circle.fill")
-                 Text("Profile")
-               }
-        }
-        
 //        TabView {
-//           ATaskSummary()
+//           MTaskSummary()
 //             .tabItem {
 //                Image(systemName: "calendar")
 //                Text("Task Summary")
 //              }
-//
-//            AProfile()
+//            MAuditorList()
+//              .tabItem {
+//                 Image(systemName: "figure.stand")
+//                 Text("HR")
+//               }
+//            MProfile()
 //              .tabItem {
 //                 Image(systemName: "person.circle.fill")
 //                 Text("Profile")
 //               }
 //        }
+        
+        TabView {
+           ATaskSummary()
+             .tabItem {
+                Image(systemName: "calendar")
+                Text("Task Summary")
+              }
+
+            AProfile()
+              .tabItem {
+                 Image(systemName: "person.circle.fill")
+                 Text("Profile")
+               }
+        }
                
         
     }
