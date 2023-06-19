@@ -8,9 +8,10 @@
 import Foundation
 
 class ManagerApi: ObservableObject {
-    var isLoading = true
+    var isLoading = false
     
     func getUser(id : Int) -> Manager?  {
+        isLoading = true
         var manager : Manager? = nil
         guard let url = URL(string: "http://13.212.103.64/managers/\(id)") else { fatalError("Missing URL") }
 

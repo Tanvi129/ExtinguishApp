@@ -70,12 +70,14 @@ struct Login: View {
                         print("Hello")
                         print(emailID)
                         print(password)
-                        network.getUser(email: emailID, password: password)
+                        
 //                        Task{
 //                            await network.getUser(email: emailID, password: password)
 //                            print("done")
 //                        }
-                        
+                        Task{
+                            network.getUser(email: emailID, password: password)
+                        }
                         
                         if(network.user?.exists == true){
                             if(network.user?.who == "A"){
