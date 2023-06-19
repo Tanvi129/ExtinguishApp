@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Task {
+struct TaskModel {
     var taskID : String
     var name : String
     var date : Date

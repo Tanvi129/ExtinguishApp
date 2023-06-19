@@ -20,7 +20,7 @@ import UIKit
 
 class DataModel {
     private var auditorList: [Auditor]
-    private var taskList:[Task]
+    private var taskList:[TaskModel]
     init(){
         auditorList = [
             Auditor(
@@ -78,7 +78,7 @@ class DataModel {
         ]
         
         taskList = [
-            Task(taskID: "XxzzYy", name: "Panda Task",date: Date(), location: "Mumbai", taskStatus: Status.inProgress,
+            TaskModel(taskID: "XxzzYy", name: "Panda Task",date: Date(), location: "Mumbai", taskStatus: Status.inProgress,
                  auditorAssigned:
                     Auditor(
                         profilePic:"profilepic1",
@@ -99,8 +99,8 @@ class DataModel {
                         companyName: "Cipla",
                         salesOfficerName: "Mr M P Gupta", salesOfficerContact: "9412436699")
             ),
-            Task(taskID: "ZzxxyV", name: "Panda Task", date: Date(), location: "Mumbai", taskStatus: Status.unassigned, startTime: "8:00 AM", endTime: "8:30 PM", distributorDetails: DistributorDetails(distributorName: "Vansh Agarwal", distributorContact: "9412436699", distributorAddress: "Mumbai"), companyDetails: CompanyDetails(companyName: "Cipla", salesOfficerName: "Mr M P Gupta", salesOfficerContact: "9412436699")),
-            Task(taskID: "WwCcztT", name: "Panda Task", date: Date(), location: "Mumbai", taskStatus: Status.completed, auditorAssigned: Auditor(
+            TaskModel(taskID: "ZzxxyV", name: "Panda Task", date: Date(), location: "Mumbai", taskStatus: Status.unassigned, startTime: "8:00 AM", endTime: "8:30 PM", distributorDetails: DistributorDetails(distributorName: "Vansh Agarwal", distributorContact: "9412436699", distributorAddress: "Mumbai"), companyDetails: CompanyDetails(companyName: "Cipla", salesOfficerName: "Mr M P Gupta", salesOfficerContact: "9412436699")),
+            TaskModel(taskID: "WwCcztT", name: "Panda Task", date: Date(), location: "Mumbai", taskStatus: Status.completed, auditorAssigned: Auditor(
                 profilePic:"profilepic1",
                 empID: "RA2011026010176",
                 name: "Tanvi Gupta",
@@ -108,7 +108,7 @@ class DataModel {
                 email: "tanvigupta129@gmail.com",
                 location: "None"
             ), startTime: "8:00 AM", endTime: "8:30 PM", distributorDetails: DistributorDetails(distributorName: "Vansh Agarwal", distributorContact: "9412436699", distributorAddress: "Mumbai"), companyDetails: CompanyDetails(companyName: "Cipla", salesOfficerName: "Mr M P Gupta", salesOfficerContact: "9412436699")),
-            Task(taskID: "VvXXty", name: "Panda Task", date: Date(), location: "Mumbai", taskStatus: Status.completed, auditorAssigned: Auditor(
+            TaskModel(taskID: "VvXXty", name: "Panda Task", date: Date(), location: "Mumbai", taskStatus: Status.completed, auditorAssigned: Auditor(
                 profilePic:"profilepic1",
                 empID: "RA2011026010177",
                 name: "Tanvi Gupta",
@@ -128,11 +128,11 @@ class DataModel {
         return auditorList[index]
     }
     
-    func getTaskList() -> [Task] {
+    func getTaskList() -> [TaskModel] {
         return taskList
     }
     
-    func getTaskList(by index: Int) -> Task {
+    func getTaskList(by index: Int) -> TaskModel {
         return taskList[index]
     }
     

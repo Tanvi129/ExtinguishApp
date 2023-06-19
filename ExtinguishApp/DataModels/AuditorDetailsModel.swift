@@ -16,6 +16,6 @@ struct Auditor{
     var phoneNumber : String
     var email: String
     var location : String
-    var assignedTasks : [Task]?
+    var assignedTasks : [TaskModel]?
     
 }

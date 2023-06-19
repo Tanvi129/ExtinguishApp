@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
+    
     var body: some View {
-       
+       Login()
 //        TabView {
 //           MTaskSummary()
 //             .tabItem {
@@ -28,19 +29,19 @@ struct ContentView: View {
 //               }
 //        }
         
-        TabView {
-           ATaskSummary()
-             .tabItem {
-                Image(systemName: "calendar")
-                Text("Task Summary")
-              }
-
-            AProfile()
-              .tabItem {
-                 Image(systemName: "person.circle.fill")
-                 Text("Profile")
-               }
-        }
+//        TabView {
+//           ATaskSummary()
+//             .tabItem {
+//                Image(systemName: "calendar")
+//                Text("Task Summary")
+//              }
+//
+//            AProfile()
+//              .tabItem {
+//                 Image(systemName: "person.circle.fill")
+//                 Text("Profile")
+//               }
+//        }
                
         
     }
@@ -48,6 +49,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView() 
     }
 }

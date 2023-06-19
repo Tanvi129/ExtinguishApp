@@ -10,6 +10,10 @@ import SwiftUI
 struct Login: View {
     @State private var emailID: String = ""
     @State private var password: String = ""
+    @State private var triggerNavigationA = false
+    @State private var triggerNavigationM = false
+    @EnvironmentObject var network: Network
+    
     //    @FocusState private var emailFieldIsFocused: Bool = false
     
     
@@ -63,26 +67,67 @@ struct Login: View {
                     Image("loginBackPic")
                     
                     Button{
+                        print("Hello")
+                        print(emailID)
+                        print(password)
+                        network.getUser(email: emailID, password: password)
+//                        Task{
+//                            await network.getUser(email: emailID, password: password)
+//                            print("done")
+//                        }
                         
-                    }label: {
+                        
+                        if(network.user?.exists == true){
+                            if(network.user?.who == "A"){
+                                triggerNavigationA = true
+                                print(network.user?.who)
+                                
+                            }else if (network.user?.who == "M"){
+                                triggerNavigationM = true
+                                print(network.user?.who)
+                            }
+                        }
+                    }
+                    label: {
                         Text("Log In").font(.title3).foregroundColor(Color("Primary"))
-                            .frame(width: 350 , height: 80).background(RoundedRectangle(cornerRadius: 15).fill(.black))
+                            .frame(width: 350 , height: 80).background(RoundedRectangle(cornerRadius: 15).fill(.black)).padding(.bottom,20)
+                    }
+                       
+
+                                       
                     }
                 }
+            .padding(16)
+            .navigationDestination(
+                    isPresented: $triggerNavigationA) {
+                        ANavigation()
+                        EmptyView().hidden()
+                             
+                    }
+                    .navigationDestination(
+                        isPresented: $triggerNavigationM) {
+                            MNavigation().navigationBarBackButtonHidden(true)
+                            
+                            EmptyView().hidden()
+                                 
+                        }
                 
                 
                 
                 
                 
-            }.navigationBarHidden(true)
-                .padding(16)
+            }
+        
+        
+                
+                .navigationBarHidden(true)
         }
     }
-}
+
 
 struct Login_Previews: PreviewProvider {
     static var previews: some View {
-        Login()
+        Login() .environmentObject(Network())
     }
 }
 

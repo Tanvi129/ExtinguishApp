@@ -7,12 +7,13 @@
 
 import Foundation
 
-struct Manager {
-    var profilePic : String
-    var empID : String
+struct Manager :  Decodable {
+    
+    var managerID : Int
+    var profilePic : String?
     var name : String
-    var phoneNumber : String
+    var phoneNumber : String?
     var email: String
-    var taskList : [Task]?
-    var auditorList : [Auditor]?
+//    var taskList : [TaskModel]?
+//    var auditorList : [Auditor]?
 }

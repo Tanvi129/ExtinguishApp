@@ -7,6 +7,7 @@
 
 import SwiftUI
 var isAssigned = true
+
 struct MTaskSummary: View {
     @StateObject var appointmentViewModel: DateViewModel = DateViewModel()
 
@@ -20,6 +21,7 @@ struct MTaskSummary: View {
     @State var selectedMonth = DateViewModel().currentMonthString()
     @State var taskList = DataModel().getTaskList()
     
+    
 
     
     var body: some View {
@@ -27,7 +29,8 @@ struct MTaskSummary: View {
         VStack (alignment : .leading){
             VStack{
                 HeaderView()
-                CalenderView(selectedMonth: $selectedMonth, selectedDate: $selectedDate, datesofMonth: $datesofMonth, currentDateIndex: $currentDateIndex).padding(16)
+                CalenderView(selectedMonth: $selectedMonth, selectedDate: $selectedDate, datesofMonth: $datesofMonth, currentDateIndex: $currentDateIndex)
+                    .padding(5)
             }.background( Color("Primary"))
                 .roundedCorner(40, corners: [.bottomLeft, .bottomRight])
                 
@@ -86,7 +89,7 @@ struct HeaderView: View {
             }
             
         }
-        .frame(height: 80)
+        .frame(height: 70)
         .padding()
         .background(Color.black)
         .roundedCorner(40, corners: [.bottomLeft, .bottomRight])
@@ -162,7 +165,7 @@ struct CalenderView: View {
 struct FilterButton: View {
     var text: String
     @Binding var selected: String
-    
+    @EnvironmentObject var network: Network
     var body: some View {
         Button(action: {
             if (selected == text) {
@@ -170,6 +173,8 @@ struct FilterButton: View {
             } else {
                 selected = text
             }
+//            print(network.user?.id)
+            
         }) {
             Text(text)
                 .font(.subheadline.weight(.semibold))
@@ -214,15 +219,15 @@ struct TaskCard: View {
                        
                     }
                     .frame(width: 200)
-                    .padding(.leading, 40)
+                    .padding(.leading, 45)
                     .padding(20).background(color)
                        
-                    HStack{
-                        Tag(text: "10/3/23", color: color)
-                        Tag(text: "10/3/23", color: color)
+                    VStack(alignment: .leading){
+                        Tag(text: "Task ID : 10/3/23", color: color)
+                        Tag(text: "Completion Date : 10/3/23", color: color)
                     }
                     .frame(width: 200)
-                    .padding(.leading, 40)
+                    .padding(.leading, 45)
                     .padding(20)
                     .background(Color("Background"))
                     
@@ -230,9 +235,10 @@ struct TaskCard: View {
                 Image("MProfile")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .frame(width: 50, height: 50)
+                    .frame(width: 60, height: 60)
                     .clipShape(Circle())
-                    .padding()
+                    .padding(.leading)
+                    .padding(.bottom,40)
             }
         }
     }

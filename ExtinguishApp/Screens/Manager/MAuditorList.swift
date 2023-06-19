@@ -10,7 +10,7 @@ import SwiftUI
 struct MAuditorList: View {
     @State private var searchText = ""
     var body: some View {
-        NavigationStack{
+        NavigationView{
             VStack{
                 ScrollView(.vertical){
                     LazyVStack(spacing: 15) {

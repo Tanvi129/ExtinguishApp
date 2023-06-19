@@ -32,6 +32,10 @@
 		2D19387A2A3A23D600E40D88 /* ProfileItemCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1938792A3A23D600E40D88 /* ProfileItemCard.swift */; };
 		2D19387C2A3A285800E40D88 /* ChangePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D19387B2A3A285800E40D88 /* ChangePassword.swift */; };
 		2D1938802A3A2B0C00E40D88 /* MAuditorList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D19387F2A3A2B0C00E40D88 /* MAuditorList.swift */; };
+		2D1938822A3F6A1D00E40D88 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1938812A3F6A1D00E40D88 /* Users.swift */; };
+		2D1938842A3F6BF300E40D88 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1938832A3F6BF300E40D88 /* Network.swift */; };
+		2D1938882A3F72AD00E40D88 /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1938872A3F72AD00E40D88 /* Navigation.swift */; };
+		2D19388A2A3F93E100E40D88 /* ManagerApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1938892A3F93E100E40D88 /* ManagerApi.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +65,10 @@
 		2D1938792A3A23D600E40D88 /* ProfileItemCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileItemCard.swift; sourceTree = "<group>"; };
 		2D19387B2A3A285800E40D88 /* ChangePassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePassword.swift; sourceTree = "<group>"; };
 		2D19387F2A3A2B0C00E40D88 /* MAuditorList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAuditorList.swift; sourceTree = "<group>"; };
+		2D1938812A3F6A1D00E40D88 /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
+		2D1938832A3F6BF300E40D88 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		2D1938872A3F72AD00E40D88 /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
+		2D1938892A3F93E100E40D88 /* ManagerApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerApi.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +158,7 @@
 			children = (
 				2D19386F2A398B1200E40D88 /* Login.swift */,
 				2D19387B2A3A285800E40D88 /* ChangePassword.swift */,
+				2D1938872A3F72AD00E40D88 /* Navigation.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -164,6 +173,7 @@
 				2D19385D2A1A748C00E40D88 /* SubtaskModel.swift */,
 				2D19385F2A1A749B00E40D88 /* TaskModel.swift */,
 				2D1938682A1AAD1300E40D88 /* StaticData.swift */,
+				2D1938812A3F6A1D00E40D88 /* Users.swift */,
 			);
 			path = DataModels;
 			sourceTree = "<group>";
@@ -172,6 +182,8 @@
 			isa = PBXGroup;
 			children = (
 				2D1938622A1A76BE00E40D88 /* DateViewModel.swift */,
+				2D1938832A3F6BF300E40D88 /* Network.swift */,
+				2D1938892A3F93E100E40D88 /* ManagerApi.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -273,13 +285,17 @@
 				2D1938632A1A76BE00E40D88 /* DateViewModel.swift in Sources */,
 				2D19386C2A35A5A200E40D88 /* CustomSegmentedControl.swift in Sources */,
 				2D19387C2A3A285800E40D88 /* ChangePassword.swift in Sources */,
+				2D1938882A3F72AD00E40D88 /* Navigation.swift in Sources */,
 				2D1938802A3A2B0C00E40D88 /* MAuditorList.swift in Sources */,
+				2D1938842A3F6BF300E40D88 /* Network.swift in Sources */,
 				2D1938512A1A739500E40D88 /* ATaskSummary.swift in Sources */,
 				2D1938672A1A7F6200E40D88 /* View-Extension.swift in Sources */,
 				2D19383F2A1A733800E40D88 /* ExtinguishAppApp.swift in Sources */,
 				2D19386E2A35BED300E40D88 /* MTaskDetail.swift in Sources */,
 				2D1938722A39B33200E40D88 /* MProfile.swift in Sources */,
 				2D19387A2A3A23D600E40D88 /* ProfileItemCard.swift in Sources */,
+				2D1938822A3F6A1D00E40D88 /* Users.swift in Sources */,
+				2D19388A2A3F93E100E40D88 /* ManagerApi.swift in Sources */,
 				2D1938762A39B36000E40D88 /* ATaskDetail.swift in Sources */,
 				2D1938582A1A741100E40D88 /* ManagerDetailsModel.swift in Sources */,
 				2D1938692A1AAD1300E40D88 /* StaticData.swift in Sources */,
