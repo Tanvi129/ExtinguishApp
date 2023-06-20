@@ -7,13 +7,17 @@
 
 import Foundation
 
-struct Manager :  Decodable {
+struct Manager : Identifiable, Decodable  {
     
-    var managerID : Int
+    var id: Int?
+    var age: Int
+    var managerId : Int
     var profilePic : String?
     var name : String
     var phoneNumber : String?
     var email: String
+    var address: String
+    var password: String
 //    var taskList : [TaskModel]?
 //    var auditorList : [Auditor]?
 }

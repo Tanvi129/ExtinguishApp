@@ -21,45 +21,51 @@ struct MTaskSummary: View {
     @State var selectedMonth = DateViewModel().currentMonthString()
     @State var taskList = DataModel().getTaskList()
     
-    
+    @State private var triggerNavigationDetail = false
 
     
     var body: some View {
         
-        VStack (alignment : .leading){
-            VStack{
-                HeaderView()
-                CalenderView(selectedMonth: $selectedMonth, selectedDate: $selectedDate, datesofMonth: $datesofMonth, currentDateIndex: $currentDateIndex)
-                    .padding(5)
-            }.background( Color("Primary"))
-                .roundedCorner(40, corners: [.bottomLeft, .bottomRight])
-                
-           
-            VStack{
-                
+        NavigationView {
+            VStack (alignment : .leading){
+                VStack{
+                    HeaderView()
+                    CalenderView(selectedMonth: $selectedMonth, selectedDate: $selectedDate, datesofMonth: $datesofMonth, currentDateIndex: $currentDateIndex)
+                        .padding(5)
+                }.background( Color("Primary"))
+                    .roundedCorner(40, corners: [.bottomLeft, .bottomRight])
                     
-                    
-                
-                   
-                HStack(alignment: .center, spacing: 10) {
-                    FilterButton(text: "Completed", selected: $filterMode)
-                    FilterButton(text: "Unassigned", selected: $filterMode)
-                    FilterButton(text: "InProgress", selected: $filterMode)
-                }
-                    ScrollView(.vertical) {
-                        LazyVStack(spacing: 10){
-                            ForEach(taskList.indices, id: \.self){
-                                task in TaskCard()
-                            }
-                        }
-                        
-                    }
                
-                
-            }.padding(16)
-          
-           
+                VStack{
+                    
+                        
+                        
+                    
+                       
+                    HStack(alignment: .center, spacing: 10) {
+                        FilterButton(text: "Completed", selected: $filterMode)
+                        FilterButton(text: "Unassigned", selected: $filterMode)
+                        FilterButton(text: "InProgress", selected: $filterMode)
+                    }
+                        ScrollView(.vertical) {
+                            LazyVStack(spacing: 10){
+                                ForEach(taskList.indices, id: \.self){
+                                    task in TaskCard().onTapGesture {
+                                        triggerNavigationDetail.toggle()
+                                    }
+                                }
+                            }
+                            
+                        }
+                   
+                    
+                }.padding(16)
+                NavigationLink(destination: MTaskDetail() , isActive: $triggerNavigationDetail) { EmptyView() }
+
+
+               
             }
+        }
         
             
         
@@ -173,7 +179,7 @@ struct FilterButton: View {
             } else {
                 selected = text
             }
-//            print(network.user?.id)
+            print(network.user?.id)
             
         }) {
             Text(text)

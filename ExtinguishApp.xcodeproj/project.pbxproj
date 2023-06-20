@@ -36,6 +36,8 @@
 		2D1938842A3F6BF300E40D88 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1938832A3F6BF300E40D88 /* Network.swift */; };
 		2D1938882A3F72AD00E40D88 /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1938872A3F72AD00E40D88 /* Navigation.swift */; };
 		2D19388A2A3F93E100E40D88 /* ManagerApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1938892A3F93E100E40D88 /* ManagerApi.swift */; };
+		2D19388C2A419C4800E40D88 /* MapScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D19388B2A419C4800E40D88 /* MapScreen.swift */; };
+		2D19388E2A419D8100E40D88 /* MAuditorDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D19388D2A419D8100E40D88 /* MAuditorDetail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +71,8 @@
 		2D1938832A3F6BF300E40D88 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		2D1938872A3F72AD00E40D88 /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
 		2D1938892A3F93E100E40D88 /* ManagerApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerApi.swift; sourceTree = "<group>"; };
+		2D19388B2A419C4800E40D88 /* MapScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScreen.swift; sourceTree = "<group>"; };
+		2D19388D2A419D8100E40D88 /* MAuditorDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAuditorDetail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +153,7 @@
 				2D19386D2A35BED300E40D88 /* MTaskDetail.swift */,
 				2D1938712A39B33200E40D88 /* MProfile.swift */,
 				2D19387F2A3A2B0C00E40D88 /* MAuditorList.swift */,
+				2D19388D2A419D8100E40D88 /* MAuditorDetail.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -159,6 +164,7 @@
 				2D19386F2A398B1200E40D88 /* Login.swift */,
 				2D19387B2A3A285800E40D88 /* ChangePassword.swift */,
 				2D1938872A3F72AD00E40D88 /* Navigation.swift */,
+				2D19388B2A419C4800E40D88 /* MapScreen.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -290,6 +296,7 @@
 				2D1938842A3F6BF300E40D88 /* Network.swift in Sources */,
 				2D1938512A1A739500E40D88 /* ATaskSummary.swift in Sources */,
 				2D1938672A1A7F6200E40D88 /* View-Extension.swift in Sources */,
+				2D19388E2A419D8100E40D88 /* MAuditorDetail.swift in Sources */,
 				2D19383F2A1A733800E40D88 /* ExtinguishAppApp.swift in Sources */,
 				2D19386E2A35BED300E40D88 /* MTaskDetail.swift in Sources */,
 				2D1938722A39B33200E40D88 /* MProfile.swift in Sources */,
@@ -300,6 +307,7 @@
 				2D1938582A1A741100E40D88 /* ManagerDetailsModel.swift in Sources */,
 				2D1938692A1AAD1300E40D88 /* StaticData.swift in Sources */,
 				2D1938782A3A209F00E40D88 /* SubtaskView.swift in Sources */,
+				2D19388C2A419C4800E40D88 /* MapScreen.swift in Sources */,
 				2D1938742A39B34200E40D88 /* AProfile.swift in Sources */,
 				2D1938532A1A73B400E40D88 /* MTaskSummary.swift in Sources */,
 				2D1938702A398B1200E40D88 /* Login.swift in Sources */,

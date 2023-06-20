@@ -26,6 +26,7 @@ struct ANavigation: View {
 }
 
 struct MNavigation: View {
+    @EnvironmentObject var network: Network
     var body: some View {
         TabView {
             MTaskSummary()
@@ -47,3 +48,10 @@ struct MNavigation: View {
     }
 }
 
+//func getManagerDetails(id : Int ) -> Manager {
+//    var managerDetails : Manager
+//    Task{
+//        managerDetails = try await ManagerApi().getRandomFood(id: id)
+//    }
+//    return managerDetails
+//}

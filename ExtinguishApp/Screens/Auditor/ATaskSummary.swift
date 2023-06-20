@@ -10,12 +10,12 @@ import SwiftUI
 struct ATaskSummary: View {
     @State private var selection = 0
     
-
+   
     var state = ["Upcoming","Completed"]
-    
+    @State private var triggerNavigationDetail = false
     var body: some View {
         
-        NavigationStack {
+        NavigationView {
             VStack(){
                 HStack{
                     Text("Task Summary")
@@ -39,10 +39,13 @@ struct ATaskSummary: View {
                 ScrollView(.vertical){
                     LazyVStack(spacing : 20){
                         ForEach(0...10, id:\.self){
-                            index in ATaskCard(company: "Cipla" , taskID: "ANAMJJJJ")
+                            index in ATaskCard(company: "Cipla" , taskID: "ANAMJJJJ").onTapGesture {
+                                triggerNavigationDetail.toggle()
+                            }
                         }
                     }
                 }
+                NavigationLink(destination: MTaskDetail() , isActive: $triggerNavigationDetail) { EmptyView() }
                 Spacer()
             }
             .padding(24)
