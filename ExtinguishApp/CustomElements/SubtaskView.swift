@@ -31,24 +31,25 @@ struct SubtaskView : View {
         }
     }
     
-    struct Item : View {
-        @State var title : String
-        @State var value : String
-        var body: some View {
-            VStack(alignment : .leading) {
-              
-                    Text(title).font(.title3.weight(.semibold))
-                Text(value).font(.title3)
-               
-            }.padding()
-                .frame(maxWidth: .infinity , alignment: .leading).background(Color("Primary"))
-            .cornerRadius(15)
-        }
-    }
+    
     
     
 }
 
+struct Item : View {
+    @State var title : String
+    @State var value : String
+    var body: some View {
+        VStack(alignment : .leading) {
+          
+                Text(title).font(.title3.weight(.semibold))
+            Text(value).font(.title3)
+           
+        }.padding()
+            .frame(maxWidth: .infinity , alignment: .leading).background(Color("Primary"))
+        .cornerRadius(15)
+    }
+}
 //struct SubtaskView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        SubtaskView()

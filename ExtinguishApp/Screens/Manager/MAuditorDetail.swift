@@ -9,39 +9,51 @@ import SwiftUI
 
 struct MAuditorDetail: View {
     @State private var selection = 0
+    @State private var triggerNavigationMap = false
     var state = ["Upcoming","Completed"]
     
     var body: some View {
-        VStack(alignment: .center){
-            VStack{
-                Image("MProfile")
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 100, height: 100)
-                    .clipShape(Circle())
-                Text("Stock Destroy").font(.title.bold())
-                Text("XXa | Cipla").font(.title2.weight(.semibold))
-                HStack(spacing : 10){
-                    Text("Assigned By - Tanvi Gupta ").font(.title3)
-                    Image(systemName: "phone.fill")
+       
+            VStack(alignment: .center) {
+                VStack {
+                    Image("MProfile")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 100, height: 100)
+                        .clipShape(Circle())
+                    Text("Ms Tanvi Gupta").font(.title.bold())
+                    Text("Female | 68").font(.title2.weight(.semibold))
+                    HStack(spacing : 10){
+                        Text("EMP ID - RA2011026010175").font(.title3)
+                        Button{
+                            triggerNavigationMap.toggle()
+                        }label: {
+                            Image(systemName: "mappin.and.ellipse")
+                        }
                         
-                        .background( Circle().fill(Color("Primary")).frame(width: 30 , height: 30))
-                }
-            }.frame(maxWidth: .infinity)
-                
-            Divider().padding(.vertical , 10)
-            Text("Work Assignment").font(.title.weight(.semibold))
-            CustomSegmentedControl(preselectedIndex: $selection, options: state).padding(.bottom , 24)
-            ScrollView(.vertical){
-                LazyVStack(spacing : 20){
-                    ForEach(0...1, id:\.self){
-                        index in MAssignedtoATaskCard(company: "Cipla" , taskID: "ANAMJJJJ")
+                            
+                            .background( Circle().fill(Color("Primary")).frame(width: 30 , height: 30))
+                    }
+                }.frame(maxWidth: .infinity)
+                    
+                Divider().padding(.vertical , 10)
+                Item(title: "Email ID", value: "fluteGupta@kpm.in")
+                Item(title: "Contact Number", value: "9557146955")
+                Item(title: "Residential Address", value: "Lane No 7, D Block , Aman Vihar, Dehradun, Uttarakhand")
+                Text("Work Assignment").font(.title.weight(.semibold))
+                CustomSegmentedControl(preselectedIndex: $selection, options: state).padding(.bottom , 24)
+                ScrollView(.vertical){
+                    LazyVStack(spacing : 20){
+                        ForEach(0...1, id:\.self){
+                            index in MAssignedtoATaskCard(company: "Cipla" , taskID: "ANAMJJJJ")
+                        }
                     }
                 }
-            }
-            Spacer()
-            
-        }.padding(24)
+                NavigationLink(destination: MapScreen() , isActive: $triggerNavigationMap) { EmptyView() }
+                Spacer()
+                
+            }.padding(24)
+        
     }
 }
 
