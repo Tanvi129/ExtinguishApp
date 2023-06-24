@@ -8,26 +8,40 @@
 import SwiftUI
 
 struct MAuditorList: View {
+    @EnvironmentObject var network: Network
     @State private var searchText = ""
     @State private var triggerNavigationDetail = false
+    @State var auditorList : [Auditor]?
     var body: some View {
         NavigationView{
-            VStack{
-                ScrollView(.vertical){
-                    LazyVStack(spacing: 15) {
-                        ForEach(0...10 , id: \.self){
-                            index in AuditorCard(empName: "Tanvi Gupta", empId: "RA26010175").onTapGesture {
-                                triggerNavigationDetail.toggle()
+            if (auditorList == nil){
+                ProgressView()
+            }else{
+                VStack{
+                    ScrollView(.vertical){
+                        LazyVStack(spacing: 15) {
+                            ForEach(auditorList!.indices , id: \.self){
+                                index in AuditorCard(empName: auditorList![index].name, empId: "\(auditorList![index].auditorId)").onTapGesture {
+                                    triggerNavigationDetail.toggle()
+                                }
                             }
                         }
                     }
+                    NavigationLink(destination: MAuditorDetail() , isActive: $triggerNavigationDetail) { EmptyView() }
                 }
-                NavigationLink(destination: MAuditorDetail() , isActive: $triggerNavigationDetail) { EmptyView() }
-            }
-//            NavigationLink(destination: MAuditorDetail() , isActive: $triggerNavigationDetail) { EmptyView() }
-            .padding(8)
-            .navigationTitle("Your Auditors")
+                .padding(8)
+                .navigationTitle("Your Auditors")
                 .searchable(text: $searchText , prompt: "Search by name or emp id")
+            }
+            
+        }.onAppear{
+            Task{
+                print("Task started")
+                print(network.user!.id)
+                auditorList = try await ManagerApi().getListOfAuditorsUnderManger(id: network.user!.id)
+                print("Task ended")
+            }
+           
         }
     }
 }

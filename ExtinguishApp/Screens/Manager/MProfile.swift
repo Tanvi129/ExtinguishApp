@@ -64,10 +64,9 @@ struct MProfile: View {
             }
            
         }.onAppear{
-            print("Hello appeared")
 
             Task{
-                managerDetails = try await ManagerApi().getRandomFood(id: network.user!.id)
+                managerDetails = try await ManagerApi().getManagerDetails(id: network.user!.id)
             }
             print(managerDetails?.name)
 

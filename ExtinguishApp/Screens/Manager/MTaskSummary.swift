@@ -19,7 +19,7 @@ struct MTaskSummary: View {
     @State var filterMode: String = "none"
     
     @State var selectedMonth = DateViewModel().currentMonthString()
-    @State var taskList = DataModel().getTaskList()
+    
     
     @State private var triggerNavigationDetail = false
 
@@ -49,7 +49,7 @@ struct MTaskSummary: View {
                     }
                         ScrollView(.vertical) {
                             LazyVStack(spacing: 10){
-                                ForEach(taskList.indices, id: \.self){
+                                ForEach(0...5, id: \.self){
                                     task in TaskCard().onTapGesture {
                                         triggerNavigationDetail.toggle()
                                     }

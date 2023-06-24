@@ -6,16 +6,19 @@
 //
 
 import Foundation
-import Foundation
 
-struct Auditor{
-    
-    var profilePic : String
-    var empID : String
+struct Auditor : Identifiable, Decodable {
+    var id: Int?
+    var profilePic : String?
+    var auditorId : Int
     var name : String
+    var address : String
     var phoneNumber : String
     var email: String
+    var managerId : Int
     var location : String
-    var assignedTasks : [TaskModel]?
+    var age : Int
+    var password : String
+//    var assignedTasks : [TaskModel]?
     
 }
