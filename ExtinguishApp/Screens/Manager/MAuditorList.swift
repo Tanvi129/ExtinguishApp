@@ -12,6 +12,7 @@ struct MAuditorList: View {
     @State private var searchText = ""
     @State private var triggerNavigationDetail = false
     @State var auditorList : [Auditor]?
+    @State var selectedAuditorDetails : Auditor?
     var body: some View {
         NavigationView{
             if (auditorList == nil){
@@ -22,12 +23,13 @@ struct MAuditorList: View {
                         LazyVStack(spacing: 15) {
                             ForEach(auditorList!.indices , id: \.self){
                                 index in AuditorCard(empName: auditorList![index].name, empId: "\(auditorList![index].auditorId)").onTapGesture {
+                                    selectedAuditorDetails = auditorList![index]
                                     triggerNavigationDetail.toggle()
                                 }
                             }
                         }
                     }
-                    NavigationLink(destination: MAuditorDetail() , isActive: $triggerNavigationDetail) { EmptyView() }
+                    NavigationLink(destination: MAuditorDetail(auditorDetails: $selectedAuditorDetails) , isActive: $triggerNavigationDetail) { EmptyView() }
                 }
                 .padding(8)
                 .navigationTitle("Your Auditors")

@@ -8,51 +8,54 @@
 import SwiftUI
 
 struct MAuditorDetail: View {
+    @Binding var auditorDetails : Auditor?
     @State private var selection = 0
     @State private var triggerNavigationMap = false
     var state = ["Upcoming","Completed"]
     
     var body: some View {
        
+        ScrollView(.vertical) {
             VStack(alignment: .center) {
-                VStack {
-                    Image("MProfile")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 100, height: 100)
-                        .clipShape(Circle())
-                    Text("Ms Tanvi Gupta").font(.title.bold())
-                    Text("Female | 68").font(.title2.weight(.semibold))
-                    HStack(spacing : 10){
-                        Text("EMP ID - RA2011026010175").font(.title3)
-                        Button{
-                            triggerNavigationMap.toggle()
-                        }label: {
-                            Image(systemName: "mappin.and.ellipse")
-                        }
-                        
+                    VStack {
+                        Image("MProfile")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 100, height: 100)
+                            .clipShape(Circle())
+                        Text(auditorDetails!.name).font(.title.bold())
+                        Text("Female | \(auditorDetails!.age)").font(.title2.weight(.semibold))
+                        HStack(spacing : 10){
+                            Text("EMP ID - \(auditorDetails!.auditorId)").font(.title3)
+                            Button{
+                                triggerNavigationMap.toggle()
+                            }label: {
+                                Image(systemName: "mappin.and.ellipse")
+                            }
                             
-                            .background( Circle().fill(Color("Primary")).frame(width: 30 , height: 30))
-                    }
-                }.frame(maxWidth: .infinity)
-                    
-                Divider().padding(.vertical , 10)
-                Item(title: "Email ID", value: "fluteGupta@kpm.in")
-                Item(title: "Contact Number", value: "9557146955")
-                Item(title: "Residential Address", value: "Lane No 7, D Block , Aman Vihar, Dehradun, Uttarakhand")
-                Text("Work Assignment").font(.title.weight(.semibold))
-                CustomSegmentedControl(preselectedIndex: $selection, options: state).padding(.bottom , 24)
-                ScrollView(.vertical){
-                    LazyVStack(spacing : 20){
-                        ForEach(0...1, id:\.self){
-                            index in MAssignedtoATaskCard(company: "Cipla" , taskID: "ANAMJJJJ")
+                                
+                                .background( Circle().fill(Color("Primary")).frame(width: 30 , height: 30))
+                        }
+                    }.frame(maxWidth: .infinity)
+                        
+                    Divider().padding(.vertical , 10)
+                    Item(title: "Email ID", value: auditorDetails!.email)
+                    Item(title: "Contact Number", value: auditorDetails!.phoneNumber)
+                    Item(title: "Residential Address", value: auditorDetails!.address)
+                    Text("Work Assignment").font(.title.weight(.semibold))
+                    CustomSegmentedControl(preselectedIndex: $selection, options: state).padding(.bottom , 24)
+                    ScrollView(.vertical){
+                        LazyVStack(spacing : 20){
+                            ForEach(0...1, id:\.self){
+                                index in MAssignedtoATaskCard(company: "Cipla" , taskID: "ANAMJJJJ")
+                            }
                         }
                     }
-                }
-                NavigationLink(destination: MapScreen() , isActive: $triggerNavigationMap) { EmptyView() }
-                Spacer()
-                
+                    NavigationLink(destination: MapScreen() , isActive: $triggerNavigationMap) { EmptyView() }
+                    Spacer()
+                    
             }.padding(24)
+        }
         
     }
 }
@@ -99,8 +102,8 @@ struct MAssignedtoATaskCard: View {
 
 
 
-struct MAuditorDetail_Previews: PreviewProvider {
-    static var previews: some View {
-        MAuditorDetail()
-    }
-}
+//struct MAuditorDetail_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MAuditorDetail()
+//    }
+//}
