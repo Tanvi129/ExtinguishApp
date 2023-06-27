@@ -38,6 +38,7 @@
 		2D19388A2A3F93E100E40D88 /* ManagerApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1938892A3F93E100E40D88 /* ManagerApi.swift */; };
 		2D19388C2A419C4800E40D88 /* MapScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D19388B2A419C4800E40D88 /* MapScreen.swift */; };
 		2D19388E2A419D8100E40D88 /* MAuditorDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D19388D2A419D8100E40D88 /* MAuditorDetail.swift */; };
+		2DB4B88D2A4B5F4800365D7D /* AuditorApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB4B88C2A4B5F4800365D7D /* AuditorApi.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +74,7 @@
 		2D1938892A3F93E100E40D88 /* ManagerApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerApi.swift; sourceTree = "<group>"; };
 		2D19388B2A419C4800E40D88 /* MapScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScreen.swift; sourceTree = "<group>"; };
 		2D19388D2A419D8100E40D88 /* MAuditorDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAuditorDetail.swift; sourceTree = "<group>"; };
+		2DB4B88C2A4B5F4800365D7D /* AuditorApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditorApi.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +192,7 @@
 				2D1938622A1A76BE00E40D88 /* DateViewModel.swift */,
 				2D1938832A3F6BF300E40D88 /* Network.swift */,
 				2D1938892A3F93E100E40D88 /* ManagerApi.swift */,
+				2DB4B88C2A4B5F4800365D7D /* AuditorApi.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				2D1938632A1A76BE00E40D88 /* DateViewModel.swift in Sources */,
 				2D19386C2A35A5A200E40D88 /* CustomSegmentedControl.swift in Sources */,
 				2D19387C2A3A285800E40D88 /* ChangePassword.swift in Sources */,
+				2DB4B88D2A4B5F4800365D7D /* AuditorApi.swift in Sources */,
 				2D1938882A3F72AD00E40D88 /* Navigation.swift in Sources */,
 				2D1938802A3A2B0C00E40D88 /* MAuditorList.swift in Sources */,
 				2D1938842A3F6BF300E40D88 /* Network.swift in Sources */,

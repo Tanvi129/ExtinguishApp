@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 class ManagerApi: ObservableObject  {
-    var isLoading = false
+    
 
     func getManagerDetails(id : Int ) async throws -> Manager {
         guard let url = URL(string: "http://localhost:3000/managers/\(id)") else { fatalError("Missing URL") }

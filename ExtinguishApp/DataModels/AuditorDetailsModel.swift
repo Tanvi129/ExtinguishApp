@@ -12,12 +12,13 @@ struct Auditor : Identifiable, Decodable {
     var profilePic : String?
     var auditorId : Int
     var name : String
+    var age : Int
+    var gender : String
     var address : String
     var phoneNumber : String
     var email: String
     var managerId : Int
-    var location : String
-    var age : Int
+    var location : loc
     var password : String
 //    var assignedTasks : [TaskModel]?
     
