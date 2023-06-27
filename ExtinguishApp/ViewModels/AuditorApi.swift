@@ -16,4 +16,16 @@ class AuditorApi: ObservableObject  {
         print("Async decodedFood", decodedAuditor)
         return decodedAuditor
     }
+    
+    func getListOfTaskUnderAuditor(id : Int ) async throws -> [TaskModel] {
+        guard let url = URL(string: "http://localhost:3000/tasks/auditor/\(id)") else { fatalError("Missing URL") }
+    
+            let urlRequest = URLRequest(url: url)
+            let (data, response) = try await URLSession.shared.data(for: urlRequest)
+            guard (response as? HTTPURLResponse)?.statusCode == 200 else { fatalError("Error while fetching data") }
+            print("Data ", data)
+        let taskList = try JSONDecoder().decode([TaskModel].self, from: data)
+        print("Length of list is ", taskList.count)
+        return taskList
+    }
 }

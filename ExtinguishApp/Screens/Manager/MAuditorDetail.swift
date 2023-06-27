@@ -11,6 +11,7 @@ struct MAuditorDetail: View {
     @Binding var auditorDetails : Auditor?
     @State private var selection = 0
     @State private var triggerNavigationMap = false
+    @State var taskList : [TaskModel]?
     var state = ["Upcoming","Completed"]
     
     var body: some View {
@@ -45,10 +46,19 @@ struct MAuditorDetail: View {
                     Text("Work Assignment").font(.title.weight(.semibold))
                     CustomSegmentedControl(preselectedIndex: $selection, options: state).padding(.bottom , 24)
                     ScrollView(.vertical){
-                        LazyVStack(spacing : 20){
-                            ForEach(0...1, id:\.self){
-                                index in MAssignedtoATaskCard(company: "Cipla" , taskID: "ANAMJJJJ")
+                        if(taskList == nil){
+                            ProgressView()
+                        }else{
+                            LazyVStack(spacing : 20){
+                                ForEach(taskList!.indices, id:\.self){
+                                    index in MAssignedtoATaskCard(taskDetail: taskList![index])
+                                }
                             }
+                        }
+                        
+                    }.onAppear{
+                        Task{
+                            taskList = try await AuditorApi().getListOfTaskUnderAuditor(id: auditorDetails!.auditorId)
                         }
                     }
                     NavigationLink(destination: MapScreen() , isActive: $triggerNavigationMap) { EmptyView() }
@@ -61,13 +71,13 @@ struct MAuditorDetail: View {
 }
 
 struct MAssignedtoATaskCard: View {
-    @State var company : String
-    @State var taskID : String
+    @State var taskDetail : TaskModel
+    
     var body: some View {
         VStack(alignment : .leading){
             VStack(alignment : .leading){
-                Text(company).font(.title2.bold())
-                Text("Task ID - \(taskID)")
+                Text(taskDetail.name).font(.title2.bold())
+                Text("Task ID - \(taskDetail.taskId)")
             }
             .padding()
             .frame(maxWidth: .infinity , alignment: .leading)
@@ -80,7 +90,7 @@ struct MAssignedtoATaskCard: View {
                 }
                 HStack{
                     Image(systemName: "clock.fill")
-                    Text("6:00 PM - 7:00 PM")
+                    Text("\(taskDetail.startTime) - \(taskDetail.endTime)")
                 }
                 Button{
                     
