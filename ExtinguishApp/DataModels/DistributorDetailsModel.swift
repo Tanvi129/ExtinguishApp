@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DistributorDetails {
+struct DistributorDetails : Decodable {
     var distributorName : String
     var distributorContact : String
     var distributorAddress : String

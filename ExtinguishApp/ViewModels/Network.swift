@@ -17,7 +17,7 @@ class Network: ObservableObject {
     }
     
     func getUser(email : String , password : String )  {
-        guard let url = URL(string: "http://52.77.226.108/login/\(email)&\(password)") else { fatalError("Missing URL") }
+        guard let url = URL(string: "http://localhost:3000/login/\(email)&\(password)") else { fatalError("Missing URL") }
 
         let urlRequest =  URLRequest(url: url)
 

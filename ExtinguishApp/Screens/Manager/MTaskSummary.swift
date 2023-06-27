@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
-var isAssigned = true
 
 struct MTaskSummary: View {
+    @EnvironmentObject var network: Network
+    @State var taskList : [TaskModel]?
+
     @StateObject var appointmentViewModel: DateViewModel = DateViewModel()
 
     
@@ -27,44 +29,51 @@ struct MTaskSummary: View {
     var body: some View {
         
         NavigationView {
-            VStack (alignment : .leading){
-                VStack{
-                    HeaderView()
-                    CalenderView(selectedMonth: $selectedMonth, selectedDate: $selectedDate, datesofMonth: $datesofMonth, currentDateIndex: $currentDateIndex)
-                        .padding(5)
-                }.background( Color("Primary"))
-                    .roundedCorner(40, corners: [.bottomLeft, .bottomRight])
-                    
-               
-                VStack{
-                    
+            if(taskList == nil){
+                ProgressView()
+            }else{
+                VStack (alignment : .leading){
+                    VStack{
+                        HeaderView()
+                        CalenderView(selectedMonth: $selectedMonth, selectedDate: $selectedDate, datesofMonth: $datesofMonth, currentDateIndex: $currentDateIndex)
+                            .padding(5)
+                    }.background( Color("Primary"))
+                        .roundedCorner(40, corners: [.bottomLeft, .bottomRight])
                         
-                        
-                    
-                       
-                    HStack(alignment: .center, spacing: 10) {
-                        FilterButton(text: "Completed", selected: $filterMode)
-                        FilterButton(text: "Unassigned", selected: $filterMode)
-                        FilterButton(text: "InProgress", selected: $filterMode)
-                    }
-                        ScrollView(.vertical) {
-                            LazyVStack(spacing: 10){
-                                ForEach(0...5, id: \.self){
-                                    task in TaskCard().onTapGesture {
-                                        triggerNavigationDetail.toggle()
-                                    }
-                                }
-                            }
-                            
-                        }
                    
-                    
-                }.padding(16)
-                NavigationLink(destination: MTaskDetail() , isActive: $triggerNavigationDetail) { EmptyView() }
+                    VStack{
+                        HStack(alignment: .center, spacing: 10) {
+                            FilterButton(text: "Completed", selected: $filterMode)
+                            FilterButton(text: "Unassigned", selected: $filterMode)
+                            FilterButton(text: "InProgress", selected: $filterMode)
+                        }
+                        
+                            ScrollView(.vertical) {
+                                LazyVStack(spacing: 10){
+                                    ForEach(taskList!.indices, id: \.self){
+                                        task in TaskCard(taskDetail: taskList![task]).onTapGesture {
+                                            triggerNavigationDetail.toggle()
+                                        }
+                                    }
+                                }.padding(.top)
+                                
+                            }
+                       
+                        
+                    }
+//                    .padding(16)
+                    NavigationLink(destination: MTaskDetail() , isActive: $triggerNavigationDetail) { EmptyView() }
 
 
-               
+                   
+                }
             }
+            
+        }.onAppear {
+            Task{
+                taskList = try await ManagerApi().getListOfTaskUnderManger(id: network.user!.id)
+            }
+            
         }
         
             
@@ -179,6 +188,9 @@ struct FilterButton: View {
             } else {
                 selected = text
             }
+            Task {
+                
+            }
             print(network.user?.id)
             
         }) {
@@ -194,12 +206,12 @@ struct FilterButton: View {
 }
 
 struct TaskCard: View {
-    var color : Color = isAssigned ? Color("Primary") : .black
+    @State var taskDetail : TaskModel
     var body: some View {
         HStack(spacing: 30 ){
             VStack{
                 Circle()
-                    .fill(isAssigned ? .black : .clear)
+                    .fill(taskDetail.taskStatus == Status.unassigned  ? .clear : .black)
                     .frame(width: 15, height: 15)
                     .background(
                     
@@ -207,7 +219,7 @@ struct TaskCard: View {
                             .stroke(.black,lineWidth: 1)
                             .padding(-3)
                     )
-                    .scaleEffect(isAssigned ? 0.8 : 1)
+                    .scaleEffect(taskDetail.taskStatus == Status.unassigned ? 1 : 0.8)
 //
                 
                 
@@ -221,16 +233,16 @@ struct TaskCard: View {
                 VStack(alignment: .leading, spacing: -1.0){
                     HStack{
                         
-                        Text("John Wick | Company")
+                        Text("John Wick | \(taskDetail.companyDetails.companyName)")
                        
                     }
                     .frame(width: 200)
                     .padding(.leading, 45)
-                    .padding(20).background(color)
+                    .padding(20).background( taskDetail.taskStatus == Status.unassigned ? .black : Color("Primary") )
                        
                     VStack(alignment: .leading){
-                        Tag(text: "Task ID : 10/3/23", color: color)
-                        Tag(text: "Completion Date : 10/3/23", color: color)
+                        Tag(isAssigned: taskDetail.taskStatus, text: "Task ID : \(taskDetail.taskId)")
+                        Tag(isAssigned: taskDetail.taskStatus, text: "Completion Date : \(taskDetail.date)")
                     }
                     .frame(width: 200)
                     .padding(.leading, 45)
@@ -249,15 +261,15 @@ struct TaskCard: View {
         }
     }
     private struct Tag: View {
+        var isAssigned : Status
         var text: String
-        var color : Color
         var body: some View {
             Text(text)
                 .font(.caption2.weight(.semibold))
                 .padding(.horizontal, 5)
                 .padding(.vertical, 5)
-                .background(color)
-                .foregroundColor(Color.white)
+                .background(isAssigned == Status.unassigned ? .black : Color("Primary") )
+                .foregroundColor(isAssigned == Status.unassigned ? Color.white : Color.black)
                 .cornerRadius(5)
         }
     }

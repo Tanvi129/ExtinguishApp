@@ -24,7 +24,7 @@ struct Login: View {
                 VStack(alignment: .leading){
                     Text("Kindly enter your Credentials").font(.title2.weight(.bold)).padding(.vertical , 20)
                         
-                    Text("Hey there, you will have to enter the email id and passcode for verification.").fixedSize(horizontal: false, vertical: true).padding(.bottom , 20)
+//                    Text("Hey there, you will have to enter the email id and passcode for verification.").fixedSize(horizontal: false, vertical: true).padding(.bottom , 20)
                 }
                
                
