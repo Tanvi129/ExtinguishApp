@@ -45,7 +45,7 @@ struct ATaskSummary: View {
                         }
                     }
                 }
-                NavigationLink(destination: MTaskDetail() , isActive: $triggerNavigationDetail) { EmptyView() }
+                NavigationLink(destination: ATaskDetail() , isActive: $triggerNavigationDetail) { EmptyView() }
                 Spacer()
             }
             .padding(24)

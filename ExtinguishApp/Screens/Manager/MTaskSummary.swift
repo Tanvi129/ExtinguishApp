@@ -10,6 +10,7 @@ import SwiftUI
 struct MTaskSummary: View {
     @EnvironmentObject var network: Network
     @State var taskList : [TaskModel]?
+    @State var selectedTaskDetails : TaskModel?
 
     @StateObject var appointmentViewModel: DateViewModel = DateViewModel()
 
@@ -52,6 +53,7 @@ struct MTaskSummary: View {
                                 LazyVStack(spacing: 10){
                                     ForEach(taskList!.indices, id: \.self){
                                         task in TaskCard(taskDetail: taskList![task]).onTapGesture {
+                                            selectedTaskDetails = taskList![task]
                                             triggerNavigationDetail.toggle()
                                         }
                                     }
@@ -62,7 +64,7 @@ struct MTaskSummary: View {
                         
                     }
 //                    .padding(16)
-                    NavigationLink(destination: MTaskDetail() , isActive: $triggerNavigationDetail) { EmptyView() }
+                    NavigationLink(destination: MTaskDetail(taskDetail: $selectedTaskDetails) , isActive: $triggerNavigationDetail) { EmptyView() }
 
 
                    

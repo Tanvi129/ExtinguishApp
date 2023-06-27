@@ -7,13 +7,14 @@
 
 import Foundation
 
-struct Subtask {
-    var subtaskId : String
+struct Subtask : Identifiable, Decodable  {
+    var id: Int?
+    var subtaskId : Int
     var stockName : String
     var pid : Int
     var batchNo : Int
-    var mfgDate : Date
-    var expDate : Date
+    var mfgDate : String
+    var expDate : String
     var noOfCases : Int
     var pieces : Int
     var outer : Int

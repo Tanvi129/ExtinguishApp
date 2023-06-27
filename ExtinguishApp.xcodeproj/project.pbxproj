@@ -39,6 +39,7 @@
 		2D19388C2A419C4800E40D88 /* MapScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D19388B2A419C4800E40D88 /* MapScreen.swift */; };
 		2D19388E2A419D8100E40D88 /* MAuditorDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D19388D2A419D8100E40D88 /* MAuditorDetail.swift */; };
 		2DB4B88D2A4B5F4800365D7D /* AuditorApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB4B88C2A4B5F4800365D7D /* AuditorApi.swift */; };
+		2DB4B88F2A4B69AE00365D7D /* CommonApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB4B88E2A4B69AE00365D7D /* CommonApi.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +76,7 @@
 		2D19388B2A419C4800E40D88 /* MapScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScreen.swift; sourceTree = "<group>"; };
 		2D19388D2A419D8100E40D88 /* MAuditorDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAuditorDetail.swift; sourceTree = "<group>"; };
 		2DB4B88C2A4B5F4800365D7D /* AuditorApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditorApi.swift; sourceTree = "<group>"; };
+		2DB4B88E2A4B69AE00365D7D /* CommonApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonApi.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +195,7 @@
 				2D1938832A3F6BF300E40D88 /* Network.swift */,
 				2D1938892A3F93E100E40D88 /* ManagerApi.swift */,
 				2DB4B88C2A4B5F4800365D7D /* AuditorApi.swift */,
+				2DB4B88E2A4B69AE00365D7D /* CommonApi.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 				2D1938842A3F6BF300E40D88 /* Network.swift in Sources */,
 				2D1938512A1A739500E40D88 /* ATaskSummary.swift in Sources */,
 				2D1938672A1A7F6200E40D88 /* View-Extension.swift in Sources */,
+				2DB4B88F2A4B69AE00365D7D /* CommonApi.swift in Sources */,
 				2D19388E2A419D8100E40D88 /* MAuditorDetail.swift in Sources */,
 				2D19383F2A1A733800E40D88 /* ExtinguishAppApp.swift in Sources */,
 				2D19386E2A35BED300E40D88 /* MTaskDetail.swift in Sources */,
