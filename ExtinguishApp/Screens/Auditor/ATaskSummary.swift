@@ -8,48 +8,59 @@
 import SwiftUI
 
 struct ATaskSummary: View {
+    @EnvironmentObject var network: Network
     @State private var selection = 0
-    
-   
+    @State var taskList : [TaskModel]?
+    @State var selectedTaskDetails : TaskModel?
     var state = ["Upcoming","Completed"]
     @State private var triggerNavigationDetail = false
     var body: some View {
         
         NavigationView {
-            VStack(){
-                HStack{
-                    Text("Task Summary")
-                        .font(.largeTitle.bold())
-                    
-                    Spacer()
-                    
-                    NavigationLink {
+            if(taskList == nil ){
+                ProgressView()
+            }else{
+                VStack(){
+                    HStack{
+                        Text("Task Summary")
+                            .font(.largeTitle.bold())
                         
-                    } label: {
-                        Image("MProfile")
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 50, height: 50)
-                            .clipShape(Circle())
-                    }
+                        Spacer()
+                        
+                        NavigationLink {
+                            
+                        } label: {
+                            Image("MProfile")
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 50, height: 50)
+                                .clipShape(Circle())
+                        }
 
-                }
-//
-                CustomSegmentedControl(preselectedIndex: $selection, options: state).padding(.bottom , 24)
-                ScrollView(.vertical){
-                    LazyVStack(spacing : 20){
-                        ForEach(0...10, id:\.self){
-                            index in ATaskCard(company: "Cipla" , taskID: "ANAMJJJJ").onTapGesture {
-                                triggerNavigationDetail.toggle()
+                    }
+    //
+                    CustomSegmentedControl(preselectedIndex: $selection, options: state).padding(.bottom , 24)
+                    ScrollView(.vertical){
+                        LazyVStack(spacing : 20){
+                            ForEach( taskList!.indices, id:\.self){
+                                index in ATaskCard(taskDetail: taskList![index]).onTapGesture {
+                                    selectedTaskDetails = taskList![index]
+                                    triggerNavigationDetail.toggle()
+                                }
                             }
                         }
                     }
+                    NavigationLink(destination: ATaskDetail(taskDetail: $selectedTaskDetails) , isActive: $triggerNavigationDetail) { EmptyView() }
+                    Spacer()
                 }
-                NavigationLink(destination: ATaskDetail() , isActive: $triggerNavigationDetail) { EmptyView() }
-                Spacer()
+                .padding(24)
+                .navigationBarHidden(true)
             }
-            .padding(24)
-            .navigationBarHidden(true)
+            
+        }.onAppear{
+            Task {
+                taskList = try await AuditorApi().getListOfTaskUnderAuditor(id: network.user!.id)
+            }
         }
     }
 }
@@ -61,13 +72,12 @@ struct ATaskSummary_Previews: PreviewProvider {
 }
 
 struct ATaskCard: View {
-    @State var company : String
-    @State var taskID : String
+    @State var taskDetail : TaskModel
     var body: some View {
         VStack(alignment : .center){
             VStack(alignment : .leading){
-                Text(company).font(.title2.bold())
-                Text("Task ID - \(taskID)")
+                Text(taskDetail.companyDetails.companyName).font(.title2.bold())
+                Text("Task ID - \(taskDetail.taskId)")
             }
             .padding()
             .frame(maxWidth: .infinity , alignment: .leading)
@@ -80,7 +90,7 @@ struct ATaskCard: View {
                 }
                 HStack{
                     Image(systemName: "clock.fill")
-                    Text("6:00 PM - 7:00 PM")
+                    Text("\(taskDetail.startTime) - \(taskDetail.endTime)")
                 }
                 HStack{
                     Button{

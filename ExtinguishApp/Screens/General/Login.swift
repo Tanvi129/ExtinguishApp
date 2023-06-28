@@ -102,7 +102,7 @@ struct Login: View {
             .padding(16)
             .navigationDestination(
                     isPresented: $triggerNavigationA) {
-                        ANavigation()
+                        ANavigation().navigationBarBackButtonHidden(true)
                         EmptyView().hidden()
                              
                     }
