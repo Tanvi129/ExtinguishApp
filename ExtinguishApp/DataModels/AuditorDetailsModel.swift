@@ -20,11 +20,23 @@ struct Auditor : Identifiable, Decodable {
     var managerId : Int
     var location : loc
     var password : String
+    
 //    var assignedTasks : [TaskModel]?
     
 }
 
 struct ProfilePic : Decodable {
     var type : String
-    var data : [Int]
+    var data : Data
+    enum CodingKeys: CodingKey {
+        case type
+        case data
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.type = try container.decode(String.self, forKey: .type)
+        let bytes = try container.decode([Int8].self, forKey: .data)
+        self.data = Data(bytes: bytes.lazy.map{UInt8(bitPattern: $0)})
+    }
 }

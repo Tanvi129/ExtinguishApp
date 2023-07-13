@@ -11,6 +11,8 @@ struct ATaskSummary: View {
     @EnvironmentObject var network: Network
     @State private var selection = 0
     @State var taskList : [TaskModel]?
+    @State var upcomingTasksList : [TaskModel]?
+    @State var completedTasksList : [TaskModel]?
     @State var selectedTaskDetails : TaskModel?
     var state = ["Upcoming","Completed"]
     @State private var triggerNavigationDetail = false
@@ -41,11 +43,22 @@ struct ATaskSummary: View {
     //
                     CustomSegmentedControl(preselectedIndex: $selection, options: state).padding(.bottom , 24)
                     ScrollView(.vertical){
-                        LazyVStack(spacing : 20){
-                            ForEach( taskList!.indices, id:\.self){
-                                index in ATaskCard(taskDetail: taskList![index]).onTapGesture {
-                                    selectedTaskDetails = taskList![index]
-                                    triggerNavigationDetail.toggle()
+                        if(selection == 0){
+                            LazyVStack(spacing : 20){
+                                ForEach( upcomingTasksList!.indices, id:\.self){
+                                    index in ATaskCard(taskDetail: upcomingTasksList![index]).onTapGesture {
+                                        selectedTaskDetails = upcomingTasksList![index]
+                                        triggerNavigationDetail.toggle()
+                                    }
+                                }
+                            }
+                        }else{
+                            LazyVStack(spacing : 20){
+                                ForEach( completedTasksList!.indices, id:\.self){
+                                    index in ATaskCard(taskDetail: completedTasksList![index]).onTapGesture {
+                                        selectedTaskDetails = completedTasksList![index]
+                                        triggerNavigationDetail.toggle()
+                                    }
                                 }
                             }
                         }
@@ -60,6 +73,9 @@ struct ATaskSummary: View {
         }.onAppear{
             Task {
                 taskList = try await AuditorApi().getListOfTaskUnderAuditor(id: network.user!.id)
+                upcomingTasksList = taskList?.filter({$0.taskStatus == Status.inProgress })
+                completedTasksList = taskList?.filter({$0.taskStatus == Status.completed})
+                
             }
         }
     }

@@ -10,6 +10,9 @@ import SwiftUI
 struct MTaskSummary: View {
     @EnvironmentObject var network: Network
     @State var taskList : [TaskModel]?
+    @State var unassignedTasksList : [TaskModel]?
+    @State var completedTasksList : [TaskModel]?
+    @State var inProgressTasksList : [TaskModel]?
     @State var selectedTaskDetails : TaskModel?
 
     @StateObject var appointmentViewModel: DateViewModel = DateViewModel()
@@ -53,11 +56,38 @@ struct MTaskSummary: View {
                             
                                 ScrollView(.vertical) {
                                     LazyVStack(spacing: 10){
-                                        ForEach(taskList!.indices, id: \.self){
-                                            task in TaskCard(taskDetail: taskList![task]).onTapGesture {
-                                                selectedTaskDetails = taskList![task]
-                                                triggerNavigationDetail.toggle()
+                                        if( filterMode == "none"){
+                                            ForEach(taskList!.indices, id: \.self){
+                                                task in TaskCard(taskDetail: taskList![task]).onTapGesture {
+                                                    selectedTaskDetails = taskList![task]
+                                                    triggerNavigationDetail.toggle()
+                                                }
                                             }
+
+                                        }else if ( filterMode == "Completed"){
+                                            ForEach(completedTasksList!.indices, id: \.self){
+                                                task in TaskCard(taskDetail: completedTasksList![task]).onTapGesture {
+                                                    selectedTaskDetails = completedTasksList![task]
+                                                    triggerNavigationDetail.toggle()
+                                                }
+                                            }
+
+                                        }else if (filterMode == "Unassigned"){
+                                            ForEach(unassignedTasksList!.indices, id: \.self){
+                                                task in TaskCard(taskDetail: unassignedTasksList![task]).onTapGesture {
+                                                    selectedTaskDetails = unassignedTasksList![task]
+                                                    triggerNavigationDetail.toggle()
+                                                }
+                                            }
+
+                                        }else if ( filterMode == "InProgress"){
+                                            ForEach(inProgressTasksList!.indices, id: \.self){
+                                                task in TaskCard(taskDetail: inProgressTasksList![task]).onTapGesture {
+                                                    selectedTaskDetails = inProgressTasksList![task]
+                                                    triggerNavigationDetail.toggle()
+                                                }
+                                            }
+
                                         }
                                     }.padding(.top)
                                     
@@ -97,6 +127,9 @@ struct MTaskSummary: View {
         }.onAppear {
             Task{
                 taskList = try await ManagerApi().getListOfTaskUnderManger(id: network.user!.id)
+                unassignedTasksList = taskList?.filter({$0.taskStatus == Status.unassigned })
+                completedTasksList = taskList?.filter({$0.taskStatus == Status.completed})
+                inProgressTasksList = taskList?.filter({$0.taskStatus == Status.inProgress})
             }
             
         }
@@ -258,7 +291,7 @@ struct TaskCard: View {
                 VStack(alignment: .leading, spacing: -1.0){
                     HStack{
                         
-                        Text("John Wick | \(taskDetail.companyDetails.companyName)")
+                        Text("John Wick | \(taskDetail.companyDetails.companyName)").foregroundColor(taskDetail.taskStatus == Status.unassigned ? Color.white : Color.black)
                        
                     }
                     .frame(width: 200)

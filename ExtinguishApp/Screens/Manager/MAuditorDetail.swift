@@ -12,6 +12,8 @@ struct MAuditorDetail: View {
     @State private var selection = 0
     @State private var triggerNavigationMap = false
     @State var taskList : [TaskModel]?
+    @State var upcomingTasksList : [TaskModel]?
+    @State var completedTasksList : [TaskModel]?
     var state = ["Upcoming","Completed"]
     
     var body: some View {
@@ -49,9 +51,17 @@ struct MAuditorDetail: View {
                         if(taskList == nil){
                             ProgressView()
                         }else{
-                            LazyVStack(spacing : 20){
-                                ForEach(taskList!.indices, id:\.self){
-                                    index in MAssignedtoATaskCard(taskDetail: taskList![index])
+                            if(selection == 0){
+                                LazyVStack(spacing : 20){
+                                    ForEach(upcomingTasksList!.indices, id:\.self){
+                                        index in MAssignedtoATaskCard(taskDetail: upcomingTasksList![index])
+                                    }
+                                }
+                            }else{
+                                LazyVStack(spacing : 20){
+                                    ForEach(completedTasksList!.indices, id:\.self){
+                                        index in MAssignedtoATaskCard(taskDetail: completedTasksList![index])
+                                    }
                                 }
                             }
                         }
@@ -59,6 +69,8 @@ struct MAuditorDetail: View {
                     }.onAppear{
                         Task{
                             taskList = try await AuditorApi().getListOfTaskUnderAuditor(id: auditorDetails!.auditorId)
+                            upcomingTasksList = taskList?.filter({$0.taskStatus == Status.inProgress })
+                            completedTasksList = taskList?.filter({$0.taskStatus == Status.completed})
                         }
                     }
                     NavigationLink(destination: MapScreen() , isActive: $triggerNavigationMap) { EmptyView() }
