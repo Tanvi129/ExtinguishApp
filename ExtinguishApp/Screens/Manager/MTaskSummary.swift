@@ -55,41 +55,46 @@ struct MTaskSummary: View {
                             }
                             
                                 ScrollView(.vertical) {
-                                    LazyVStack(spacing: 10){
-                                        if( filterMode == "none"){
+                                    if( filterMode == "none"){
+                                        LazyVStack(spacing: 10){
                                             ForEach(taskList!.indices, id: \.self){
                                                 task in TaskCard(taskDetail: taskList![task]).onTapGesture {
                                                     selectedTaskDetails = taskList![task]
                                                     triggerNavigationDetail.toggle()
                                                 }
                                             }
-
-                                        }else if ( filterMode == "Completed"){
+                                        }.padding(.top)
+                                    }else if ( filterMode == "Completed"){
+                                        LazyVStack(spacing: 10){
                                             ForEach(completedTasksList!.indices, id: \.self){
                                                 task in TaskCard(taskDetail: completedTasksList![task]).onTapGesture {
                                                     selectedTaskDetails = completedTasksList![task]
                                                     triggerNavigationDetail.toggle()
                                                 }
                                             }
-
-                                        }else if (filterMode == "Unassigned"){
+                                        }.padding(.top)
+                                    }
+                                    else if ( filterMode == "Unassigned"){
+                                        LazyVStack(spacing: 10){
                                             ForEach(unassignedTasksList!.indices, id: \.self){
                                                 task in TaskCard(taskDetail: unassignedTasksList![task]).onTapGesture {
                                                     selectedTaskDetails = unassignedTasksList![task]
                                                     triggerNavigationDetail.toggle()
                                                 }
                                             }
-
-                                        }else if ( filterMode == "InProgress"){
+                                        }.padding(.top)
+                                    }
+                                    else if ( filterMode == "InProgress"){
+                                        LazyVStack(spacing: 10){
                                             ForEach(inProgressTasksList!.indices, id: \.self){
                                                 task in TaskCard(taskDetail: inProgressTasksList![task]).onTapGesture {
                                                     selectedTaskDetails = inProgressTasksList![task]
                                                     triggerNavigationDetail.toggle()
                                                 }
                                             }
-
-                                        }
-                                    }.padding(.top)
+                                        }.padding(.top)
+                                    }
+                                    
                                     
                                 }
                            

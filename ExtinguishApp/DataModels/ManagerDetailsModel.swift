@@ -13,6 +13,7 @@ struct Manager : Identifiable, Decodable  {
     var age: Int
     var managerId : Int
     var profilePic : String?
+    var gender : Int
     var name : String
     var phoneNumber : String?
     var email: String

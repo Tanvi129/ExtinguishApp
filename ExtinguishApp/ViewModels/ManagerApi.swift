@@ -34,7 +34,7 @@ class ManagerApi: ObservableObject  {
             guard (response as? HTTPURLResponse)?.statusCode == 200 else { fatalError("Error while fetching data") }
             print("Data ", data)
         let auditorList = try JSONDecoder().decode([Auditor].self, from: data)
-        print("Length of list is ", auditorList.count)
+        print("Length of list is Auditor List ", auditorList.count)
         return auditorList
     }
     
