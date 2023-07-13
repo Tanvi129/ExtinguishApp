@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct ExtinguishAppApp: App {
-    var network: Network = Network()
+    @StateObject var network: Network = Network()
     
     var body: some Scene {
         WindowGroup {
@@ -17,3 +17,5 @@ struct ExtinguishAppApp: App {
         }
     }
 }
+
+

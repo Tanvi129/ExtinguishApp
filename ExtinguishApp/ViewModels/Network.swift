@@ -6,15 +6,14 @@
 //
 
 import Foundation
-import SwiftUI
 
+@MainActor
 class Network: ObservableObject {
     @Published var user : User? = nil
-    var isLoading = true
+    @Published var isLoggedIn = false
+    @Published var isBusy = false
     
-    init(){
-//        getUser()
-    }
+    
     
     func getUser(email : String , password : String )  {
         guard let url = URL(string: "http://localhost:3000/login/\(email)&\(password)") else { fatalError("Missing URL") }
@@ -35,6 +34,7 @@ class Network: ObservableObject {
                     do {
                         let decodedUsers = try JSONDecoder().decode(User.self, from: data)
                         self.user = decodedUsers
+                        self.isLoggedIn = true
                     } catch let error {
                         print("Error decoding: ", error)
                     }
@@ -43,7 +43,18 @@ class Network: ObservableObject {
         }
 
         dataTask.resume()
-        self.isLoading = false
+        
+    }
+    
+    func signOut() async {
+        self.isBusy = true
+        do {
+            try await Task.sleep(nanoseconds: 1_000_000_000)
+            self.isLoggedIn = false
+            self.isBusy = false
+        }catch{
+            print("Loggout faiure")
+        }
     }
 
 }

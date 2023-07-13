@@ -8,9 +8,25 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var network : Network
+    
     
     var body: some View {
-       Login()
+       
+            if (network.isLoggedIn == false) {
+                    Login()
+            }else{
+                if(network.user?.exists == true){
+                    if(network.user?.who == "A") {
+                        
+                        ANavigation().navigationBarBackButtonHidden(true)
+                        
+                    }else if (network.user?.who == "M") {
+                        
+                        MNavigation().navigationBarBackButtonHidden(true)
+                    }
+                }
+            }
     }
 }
 

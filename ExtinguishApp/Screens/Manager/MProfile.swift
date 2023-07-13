@@ -17,7 +17,7 @@ struct MProfile: View {
     var body: some View {
         
         NavigationView {
-            if(managerDetails == nil){
+            if(managerDetails == nil || network.isBusy == true){
                 ProgressView()
             }else{
                 VStack(alignment: .leading) {
@@ -59,7 +59,18 @@ struct MProfile: View {
                             
                     NavigationLink(destination: ChangePassword() , isActive: $triggerNavigationPassword) { EmptyView() }
                     Spacer()
-                }.padding(24)
+                }
+                .toolbar {
+                    Button {
+                        Task{
+                            await network.signOut()
+                        }
+                        
+                    } label: {
+                        Image(systemName: "iphone.and.arrow.forward").resizable().frame(width : 30 , height: 30)
+                    }
+                }
+                .padding(24)
                     
             }
            

@@ -40,6 +40,9 @@
 		2D19388E2A419D8100E40D88 /* MAuditorDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D19388D2A419D8100E40D88 /* MAuditorDetail.swift */; };
 		2DB4B88D2A4B5F4800365D7D /* AuditorApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB4B88C2A4B5F4800365D7D /* AuditorApi.swift */; };
 		2DB4B88F2A4B69AE00365D7D /* CommonApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB4B88E2A4B69AE00365D7D /* CommonApi.swift */; };
+		2DB4B8912A4CB83300365D7D /* MAddTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB4B8902A4CB83300365D7D /* MAddTask.swift */; };
+		2DB4B8932A4CBDB200365D7D /* CustomTextFiled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB4B8922A4CBDB200365D7D /* CustomTextFiled.swift */; };
+		2DB4B8952A60216800365D7D /* Image-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB4B8942A60216800365D7D /* Image-Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +80,9 @@
 		2D19388D2A419D8100E40D88 /* MAuditorDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAuditorDetail.swift; sourceTree = "<group>"; };
 		2DB4B88C2A4B5F4800365D7D /* AuditorApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditorApi.swift; sourceTree = "<group>"; };
 		2DB4B88E2A4B69AE00365D7D /* CommonApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonApi.swift; sourceTree = "<group>"; };
+		2DB4B8902A4CB83300365D7D /* MAddTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAddTask.swift; sourceTree = "<group>"; };
+		2DB4B8922A4CBDB200365D7D /* CustomTextFiled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFiled.swift; sourceTree = "<group>"; };
+		2DB4B8942A60216800365D7D /* Image-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image-Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +164,7 @@
 				2D1938712A39B33200E40D88 /* MProfile.swift */,
 				2D19387F2A3A2B0C00E40D88 /* MAuditorList.swift */,
 				2D19388D2A419D8100E40D88 /* MAuditorDetail.swift */,
+				2DB4B8902A4CB83300365D7D /* MAddTask.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -204,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				2D1938662A1A7F6200E40D88 /* View-Extension.swift */,
+				2DB4B8942A60216800365D7D /* Image-Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -214,6 +222,7 @@
 				2D19386B2A35A5A200E40D88 /* CustomSegmentedControl.swift */,
 				2D1938772A3A209F00E40D88 /* SubtaskView.swift */,
 				2D1938792A3A23D600E40D88 /* ProfileItemCard.swift */,
+				2DB4B8922A4CBDB200365D7D /* CustomTextFiled.swift */,
 			);
 			path = CustomElements;
 			sourceTree = "<group>";
@@ -303,9 +312,11 @@
 				2D1938842A3F6BF300E40D88 /* Network.swift in Sources */,
 				2D1938512A1A739500E40D88 /* ATaskSummary.swift in Sources */,
 				2D1938672A1A7F6200E40D88 /* View-Extension.swift in Sources */,
+				2DB4B8932A4CBDB200365D7D /* CustomTextFiled.swift in Sources */,
 				2DB4B88F2A4B69AE00365D7D /* CommonApi.swift in Sources */,
 				2D19388E2A419D8100E40D88 /* MAuditorDetail.swift in Sources */,
 				2D19383F2A1A733800E40D88 /* ExtinguishAppApp.swift in Sources */,
+				2DB4B8912A4CB83300365D7D /* MAddTask.swift in Sources */,
 				2D19386E2A35BED300E40D88 /* MTaskDetail.swift in Sources */,
 				2D1938722A39B33200E40D88 /* MProfile.swift in Sources */,
 				2D19387A2A3A23D600E40D88 /* ProfileItemCard.swift in Sources */,
@@ -317,6 +328,7 @@
 				2D1938782A3A209F00E40D88 /* SubtaskView.swift in Sources */,
 				2D19388C2A419C4800E40D88 /* MapScreen.swift in Sources */,
 				2D1938742A39B34200E40D88 /* AProfile.swift in Sources */,
+				2DB4B8952A60216800365D7D /* Image-Extension.swift in Sources */,
 				2D1938532A1A73B400E40D88 /* MTaskSummary.swift in Sources */,
 				2D1938702A398B1200E40D88 /* Login.swift in Sources */,
 			);

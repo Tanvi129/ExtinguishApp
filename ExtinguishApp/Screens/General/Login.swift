@@ -10,8 +10,7 @@ import SwiftUI
 struct Login: View {
     @State private var emailID: String = ""
     @State private var password: String = ""
-    @State private var triggerNavigationA = false
-    @State private var triggerNavigationM = false
+
     @EnvironmentObject var network: Network
     
     //    @FocusState private var emailFieldIsFocused: Bool = false
@@ -26,12 +25,7 @@ struct Login: View {
                         
 //                    Text("Hey there, you will have to enter the email id and passcode for verification.").fixedSize(horizontal: false, vertical: true).padding(.bottom , 20)
                 }
-               
-               
-                    
-                
-                
-                
+
                 TextField(
                     "E-mail ID",
                     text: $emailID
@@ -79,16 +73,7 @@ struct Login: View {
                             network.getUser(email: emailID, password: password)
                         }
                         
-                        if(network.user?.exists == true){
-                            if(network.user?.who == "A"){
-                                triggerNavigationA = true
-                                print(network.user?.who)
-                                
-                            }else if (network.user?.who == "M"){
-                                triggerNavigationM = true
-                                print(network.user?.who)
-                            }
-                        }
+//
                     }
                     label: {
                         Text("Log In").font(.title3).foregroundColor(Color("Primary"))
@@ -100,29 +85,9 @@ struct Login: View {
                     }
                 }
             .padding(16)
-            .navigationDestination(
-                    isPresented: $triggerNavigationA) {
-                        ANavigation().navigationBarBackButtonHidden(true)
-                        EmptyView().hidden()
-                             
-                    }
-                    .navigationDestination(
-                        isPresented: $triggerNavigationM) {
-                            MNavigation().navigationBarBackButtonHidden(true)
-                            
-                            EmptyView().hidden()
-                                 
-                        }
-                
-                
-                
-                
-                
+ 
             }
-        
-        
-                
-                .navigationBarHidden(true)
+            .navigationBarHidden(true)
         }
     }
 

@@ -25,6 +25,7 @@ struct MTaskSummary: View {
     
     
     @State private var triggerNavigationDetail = false
+    @State private var triggerAddTask = false
 
     
     var body: some View {
@@ -33,41 +34,63 @@ struct MTaskSummary: View {
             if(taskList == nil){
                 ProgressView()
             }else{
-                VStack (alignment : .leading){
-                    VStack{
-                        HeaderView()
-                        CalenderView(selectedMonth: $selectedMonth, selectedDate: $selectedDate, datesofMonth: $datesofMonth, currentDateIndex: $currentDateIndex)
-                            .padding(5)
-                    }.background( Color("Primary"))
-                        .roundedCorner(40, corners: [.bottomLeft, .bottomRight])
-                        
-                   
-                    VStack{
-                        HStack(alignment: .center, spacing: 10) {
-                            FilterButton(text: "Completed", selected: $filterMode)
-                            FilterButton(text: "Unassigned", selected: $filterMode)
-                            FilterButton(text: "InProgress", selected: $filterMode)
-                        }
-                        
-                            ScrollView(.vertical) {
-                                LazyVStack(spacing: 10){
-                                    ForEach(taskList!.indices, id: \.self){
-                                        task in TaskCard(taskDetail: taskList![task]).onTapGesture {
-                                            selectedTaskDetails = taskList![task]
-                                            triggerNavigationDetail.toggle()
-                                        }
-                                    }
-                                }.padding(.top)
-                                
-                            }
+                ZStack (alignment: .bottom ){
+                    VStack (alignment : .leading){
+                        VStack{
+                            HeaderView()
+                            CalenderView(selectedMonth: $selectedMonth, selectedDate: $selectedDate, datesofMonth: $datesofMonth, currentDateIndex: $currentDateIndex)
+                                .padding(5)
+                        }.background( Color("Primary"))
+                            .roundedCorner(40, corners: [.bottomLeft, .bottomRight])
+                            
                        
-                        
+                        VStack{
+                            HStack(alignment: .center, spacing: 10) {
+                                FilterButton(text: "Completed", selected: $filterMode)
+                                FilterButton(text: "Unassigned", selected: $filterMode)
+                                FilterButton(text: "InProgress", selected: $filterMode)
+                            }
+                            
+                                ScrollView(.vertical) {
+                                    LazyVStack(spacing: 10){
+                                        ForEach(taskList!.indices, id: \.self){
+                                            task in TaskCard(taskDetail: taskList![task]).onTapGesture {
+                                                selectedTaskDetails = taskList![task]
+                                                triggerNavigationDetail.toggle()
+                                            }
+                                        }
+                                    }.padding(.top)
+                                    
+                                }
+                           
+                            
+                        }
+    //                    .padding(16)
+                        NavigationLink(destination: MTaskDetail(taskDetail: $selectedTaskDetails) , isActive: $triggerNavigationDetail) { EmptyView() }
+
+
+                       
                     }
-//                    .padding(16)
-                    NavigationLink(destination: MTaskDetail(taskDetail: $selectedTaskDetails) , isActive: $triggerNavigationDetail) { EmptyView() }
-
-
-                   
+                    HStack {
+                                    
+                                    Spacer()
+                                    
+                                    Button(action: {
+                                        triggerAddTask.toggle()
+                                    }) {
+                                        Image(systemName: "plus")
+                                            .resizable()
+                                            .scaledToFill()
+                                            .frame(width: 25, height: 25)
+                                            .padding()
+                                    }
+                                    .background(Color("Primary"))
+                                    .foregroundColor(.black)
+                                    .cornerRadius(.infinity)
+                                    .padding()
+                                    
+                                }
+                    NavigationLink(destination: MAddTask() , isActive: $triggerAddTask) { EmptyView() }
                 }
             }
             

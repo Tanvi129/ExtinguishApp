@@ -9,7 +9,7 @@ import Foundation
 
 struct Auditor : Identifiable, Decodable {
     var id: Int?
-    var profilePic : String?
+    var profile_pic : ProfilePic?
     var auditorId : Int
     var name : String
     var age : Int
@@ -22,4 +22,9 @@ struct Auditor : Identifiable, Decodable {
     var password : String
 //    var assignedTasks : [TaskModel]?
     
+}
+
+struct ProfilePic : Decodable {
+    var type : String
+    var data : [Int]
 }
