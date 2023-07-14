@@ -15,7 +15,7 @@ struct MAddTask: View {
     @State private var contractPersonName : String = ""
     @State private var conractPersonNumber: String = ""
     @State private var subtaskList : [Subtask?] = []
-    @State var count = 1
+    @State var count = 0
     var body: some View {
         ScrollView(.vertical) {
             VStack{
@@ -29,7 +29,7 @@ struct MAddTask: View {
                     Text("Stock Details").font(.title2.weight(.semibold))
                     Spacer()
                     Button {
-                        
+                        count = count + 1
                     } label: {
                         Image(systemName: "plus")
                             .resizable()
@@ -39,8 +39,24 @@ struct MAddTask: View {
                     }
                     
                 }.padding(.vertical,10)
+                ForEach( 0..<count, id: \.self){ index in
+                    CreateSubtask(val: $taskName, count: $count)
+                }
+                Button{
+                    
+                }label: {
+                    HStack{
+                        Image(systemName: "note.text").foregroundColor(.white)
+                        Text("Create Task").foregroundColor(.white)
+                    }
+                    .padding(20)
+                    .frame(maxWidth: .infinity) .background(.black)
+                    .cornerRadius(15)
+                    
+                   
+                }.padding(.top,10)
                 
-                CreateSubtask(val: $taskName)
+               
              
             }.padding(24)
             .navigationTitle("Create New Task")
@@ -49,16 +65,24 @@ struct MAddTask: View {
 }
 struct CreateSubtask: View {
     @Binding var val : String
+    @Binding var count : Int
     var body: some View {
         VStack{
             
             HStack{
                 Text("Subtask 1").font(.title3.weight(.semibold))
                 Spacer()
-                Image(systemName: "minus")
-                    .resizable()
-                    .frame(width: 20 , height: 3)
-                    .background( Circle().fill(Color("Primary")).frame(width: 45 , height: 45))
+                Button{
+                    if(count>0){
+                       count = count - 1
+                    }
+                }label: {
+                    Image(systemName: "minus")
+                        .resizable()
+                        .frame(width: 20 , height: 3)
+                        .background( Circle().fill(Color("Primary")).frame(width: 45 , height: 45))
+                }
+                
             }.padding(.vertical,10)
             CustomTextFiled(label: "Batch Number", value: $val)
             CustomTextFiled(label: "Product Name", value: $val)
