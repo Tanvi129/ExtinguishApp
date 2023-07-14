@@ -116,10 +116,11 @@ struct MTaskSummary: View {
                                         Image(systemName: "plus")
                                             .resizable()
                                             .scaledToFill()
+                                            .foregroundColor(.white)
                                             .frame(width: 25, height: 25)
                                             .padding()
                                     }
-                                    .background(Color("Primary"))
+                                    .background(.black)
                                     .foregroundColor(.black)
                                     .cornerRadius(.infinity)
                                     .padding()

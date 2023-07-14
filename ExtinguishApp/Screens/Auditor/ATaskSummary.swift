@@ -88,11 +88,12 @@ struct ATaskSummary_Previews: PreviewProvider {
 }
 
 struct ATaskCard: View {
+    @State private var showingAlert = false
     @State var taskDetail : TaskModel
     var body: some View {
         VStack(alignment : .center){
             VStack(alignment : .leading){
-                Text(taskDetail.companyDetails.companyName).font(.title2.bold())
+                Text(taskDetail.name).font(.title2.bold())
                 Text("Task ID - \(taskDetail.taskId)")
             }
             .padding()
@@ -108,20 +109,31 @@ struct ATaskCard: View {
                     Image(systemName: "clock.fill")
                     Text("\(taskDetail.startTime) - \(taskDetail.endTime)")
                 }
-                HStack{
-                    Button{
-                        
-                    }label: {
-                        Text("Reschedule").foregroundColor(.red)
-                    }
-                    Spacer()
-                    Button{
-                        
-                    }label: {
-                        Text("Completed")
-                    }
-                }.padding(.horizontal, 24)
-                    .padding(.vertical, 8)
+                if(taskDetail.taskStatus != Status.completed){
+                    HStack{
+                        Button{
+                            
+                        }label: {
+                            Text("Reschedule").foregroundColor(.red)
+                        }
+                        Spacer()
+                        Button{
+                            showingAlert = true
+                        }label: {
+                            Text("Completed")
+                        }.alert(isPresented:$showingAlert) {
+                            Alert(
+                                title: Text("Mark \(taskDetail.name) as Completed?"),
+                                primaryButton: .destructive(Text("Cancel")),
+                                secondaryButton: .default(Text("Yes")) {
+                                    print("Deleting...")
+                                }
+                            )
+                        }
+                    }.padding(.horizontal, 24)
+                        .padding(.vertical, 8)
+                }
+                
             } .padding()
                
         }

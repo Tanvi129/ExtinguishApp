@@ -58,6 +58,19 @@ struct MTaskDetail: View {
                         ForEach( subtaskList!.indices, id: \.self){
                             index in SubtaskView(subtaskID: "\(subtaskList![index].subtaskId)", productName: subtaskList![index].stockName, batchNumber: "\(subtaskList![index].batchNo)", expiryDate: subtaskList![index].expDate, boxCount: subtaskList![index].noOfCases, pieceCount: subtaskList![index].pieces , outer: subtaskList![index].outer)
                         }
+                        Button{
+                            
+                        }label: {
+                            HStack{
+                                Image(systemName: "note.text").foregroundColor(.white)
+                                Text("View Proofs").foregroundColor(.white)
+                            }
+                            .padding(20)
+                            .frame(maxWidth: .infinity) .background(Color("Button"))
+                            .cornerRadius(15)
+                            
+                           
+                        }.padding(.top,10)
                         
                     }
                 }
