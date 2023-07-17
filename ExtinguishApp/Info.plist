@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>App Transport Security Settings</key>
+	<dict>
+		<key>Allow Arbitary Loads</key>
+		<true/>
+		<key>Exception Domains</key>
+		<dict>
+			<key>localhost.com</key>
+			<dict>
+				<key>NSExceptionAllowsInsercureHTTPLoads</key>
+				<true/>
+				<key>NSIncludeSubdomains</key>
+				<true/>
+			</dict>
+		</dict>
+	</dict>
+</dict>
+</plist>

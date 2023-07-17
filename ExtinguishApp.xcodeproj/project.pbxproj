@@ -90,11 +90,11 @@
 		2DB4B8902A4CB83300365D7D /* MAddTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAddTask.swift; sourceTree = "<group>"; };
 		2DB4B8922A4CBDB200365D7D /* CustomTextFiled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFiled.swift; sourceTree = "<group>"; };
 		2DB4B8942A60216800365D7D /* Image-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image-Extension.swift"; sourceTree = "<group>"; };
+		2DB4B8962A6516A600365D7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7721A2DE3611CB2E3767915D /* Pods-ExtinguishApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExtinguishApp.release.xcconfig"; path = "Target Support Files/Pods-ExtinguishApp/Pods-ExtinguishApp.release.xcconfig"; sourceTree = "<group>"; };
 		9C0268D72A6407D1002A0905 /* imagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = imagePicker.swift; sourceTree = "<group>"; };
 		9C0268D92A64582D002A0905 /* ProofDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProofDetailsModel.swift; sourceTree = "<group>"; };
 		9C0268DB2A6458F9002A0905 /* ProofApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProofApi.swift; sourceTree = "<group>"; };
-		9C1268632A6107FB007813D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		AA52FB3235CA536428A84806 /* Pods-ExtinguishApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExtinguishApp.debug.xcconfig"; path = "Target Support Files/Pods-ExtinguishApp/Pods-ExtinguishApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -133,8 +133,6 @@
 		2D19383D2A1A733800E40D88 /* ExtinguishApp */ = {
 			isa = PBXGroup;
 			children = (
-				9C1268632A6107FB007813D6 /* Info.plist */,
-				9C1268622A60F866007813D6 /* uploads */,
 				2D19386A2A35A58300E40D88 /* CustomElements */,
 				2D1938652A1A7F4B00E40D88 /* Extensions */,
 				2D1938612A1A76A100E40D88 /* ViewModels */,
@@ -144,6 +142,7 @@
 				2D1938402A1A733800E40D88 /* ContentView.swift */,
 				2D1938422A1A733900E40D88 /* Assets.xcassets */,
 				2D1938442A1A733900E40D88 /* Preview Content */,
+				2DB4B8962A6516A600365D7D /* Info.plist */,
 			);
 			path = ExtinguishApp;
 			sourceTree = "<group>";
@@ -265,13 +264,6 @@
 				01E314D7C52011B2C6DB1FC9 /* Pods_ExtinguishApp.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		9C1268622A60F866007813D6 /* uploads */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = uploads;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

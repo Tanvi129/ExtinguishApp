@@ -176,7 +176,13 @@ struct ATaskDetail: View {
                             print("selected")
                             showImagePicker = true
                         } label: {
-                            Text("Upload Proof")
+                            HStack{
+                                Image(systemName: "square.and.arrow.up").foregroundColor(.white)
+                                Text("Upload Proofs").foregroundColor(.white)
+                            }
+                            .padding(20)
+                            .frame(maxWidth: .infinity) .background(Color("Button"))
+                            .cornerRadius(15)
                         }
                         .sheet(isPresented: $showImagePicker) {
                             ImagePicker(image: $inputImage)
