@@ -66,7 +66,7 @@ struct MTaskDetail: View {
                                 Text("View Proofs").foregroundColor(.white)
                             }
                             .padding(20)
-                            .frame(maxWidth: .infinity) .background(Color("Button"))
+                            .frame(maxWidth: .infinity).background(Color("Button"))
                             .cornerRadius(15)
                             
                            
