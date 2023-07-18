@@ -20,7 +20,6 @@ class ManagerApi: ObservableObject  {
 
             guard (response as? HTTPURLResponse)?.statusCode == 200 else { fatalError("Error while fetching data") }
             let decodedManager = try JSONDecoder().decode(Manager.self, from: data)
-        print("Async decodedFood", decodedManager)
         return decodedManager
     }
     
@@ -34,7 +33,6 @@ class ManagerApi: ObservableObject  {
             guard (response as? HTTPURLResponse)?.statusCode == 200 else { fatalError("Error while fetching data") }
             print("Data ", data)
         let auditorList = try JSONDecoder().decode([Auditor].self, from: data)
-        print("Length of list is Auditor List ", auditorList.count)
         return auditorList
     }
     
