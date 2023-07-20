@@ -11,15 +11,16 @@ class ProofApi : ObservableObject {
     
     func getProofsList(auditorId : Int ) async throws -> [ProofsList] {
         guard let url = URL(string: "http://localhost:3000/proofs/\(auditorId)") else { fatalError("Missing URL") }
-    
+                
             let urlRequest = URLRequest(url: url)
             let (data, response) = try await URLSession.shared.data(for: urlRequest)
         
-
+            
             guard (response as? HTTPURLResponse)?.statusCode == 200 else { fatalError("Error while fetching data") }
             print("Data ", data)
         let proofsList = try JSONDecoder().decode([ProofsList].self, from: data)
-        print("Length of list is ", proofsList.count)
+        print(proofsList)
+        print("Length of proof list is ", proofsList.count)
         return proofsList
     }
     

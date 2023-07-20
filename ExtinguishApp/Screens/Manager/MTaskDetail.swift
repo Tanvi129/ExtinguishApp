@@ -6,10 +6,40 @@
 //
 
 import SwiftUI
+import ImageKitIO
+import URLImage
+
+
+
 
 struct MTaskDetail: View {
     @Binding var taskDetail : TaskModel?
     @State var subtaskList : [Subtask]?
+    @State private var proofList : [ProofsList]?
+    
+    
+    let urlConstructor = ImageKit.shared.url(
+        urlEndpoint: "https://ik.imagekit.io/uxv7hoiuz",
+        path: "default-image.jpg",
+        transformationPosition: TransformationPosition.QUERY
+    )
+    
+    private func loadImage() -> UIImage? {
+         guard let imageURL = URL(string: urlConstructor.create()) else {
+             return nil
+         }
+
+         do {
+             
+             let imageData = try Data(contentsOf: imageURL)
+             print(imageData)
+             return UIImage(data: imageData)
+         } catch {
+             print("Error loading image data: \(error)")
+             return nil
+         }
+     }
+    
     var body: some View {
         VStack(alignment: .leading){
             VStack{
@@ -59,7 +89,7 @@ struct MTaskDetail: View {
                             index in SubtaskView(subtaskID: "\(subtaskList![index].subtaskId)", productName: subtaskList![index].stockName, batchNumber: "\(subtaskList![index].batchNo)", expiryDate: subtaskList![index].expDate, boxCount: subtaskList![index].noOfCases, pieceCount: subtaskList![index].pieces , outer: subtaskList![index].outer)
                         }
                         Button{
-                                                    
+ 
                         }label: {
                             HStack{
                                 Image(systemName: "note.text").foregroundColor(.white)
@@ -68,9 +98,16 @@ struct MTaskDetail: View {
                             .padding(20)
                             .frame(maxWidth: .infinity).background(Color("Button"))
                             .cornerRadius(15)
-                            
                            
-                        }.padding(.top,10)
+                        }.padding(.top,10).onTapGesture{
+                            
+                            ForEach(proofList!.indices, id : \.self){
+                                index in
+                                ProofItemView(proofUrl: proofList![index].url)
+                                
+                            }
+                        }
+
                         
                     }
                 }
@@ -81,6 +118,7 @@ struct MTaskDetail: View {
             }.onAppear{
                 Task {
                     subtaskList = try await CommonApi().getListOfSubtask(taskId: taskDetail!.taskId!)
+                    proofList = try await ProofApi().getProofsList(auditorId: taskDetail!.auditorAssigned )
                 }
             }
         }
