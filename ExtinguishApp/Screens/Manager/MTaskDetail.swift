@@ -15,7 +15,8 @@ import URLImage
 struct MTaskDetail: View {
     @Binding var taskDetail : TaskModel?
     @State var subtaskList : [Subtask]?
-    @State private var proofList : [ProofsList]?
+    @State  var proofList : [ProofsList]?
+    @State var showProof = false
     
     
     let urlConstructor = ImageKit.shared.url(
@@ -60,10 +61,10 @@ struct MTaskDetail: View {
                 
             Divider().padding(.vertical , 10)
             ScrollView(.vertical ){
-                if(subtaskList == nil ){
+                if(subtaskList == nil || proofList == nil){
                     ProgressView()
-                }else{
-                    LazyVStack(alignment : .leading, spacing: 10){
+                }else {
+                    VStack(alignment : .leading, spacing: 10) {
                         HStack(alignment : . center , spacing:  20){
                             Image(systemName: "clock.fill")
                             VStack(alignment : .leading){
@@ -89,24 +90,27 @@ struct MTaskDetail: View {
                             index in SubtaskView(subtaskID: "\(subtaskList![index].subtaskId)", productName: subtaskList![index].stockName, batchNumber: "\(subtaskList![index].batchNo)", expiryDate: subtaskList![index].expDate, boxCount: subtaskList![index].noOfCases, pieceCount: subtaskList![index].pieces , outer: subtaskList![index].outer)
                         }
                         Button{
- 
+                            showProof.toggle()
                         }label: {
                             HStack{
                                 Image(systemName: "note.text").foregroundColor(.white)
-                                Text("View Proofs").foregroundColor(.white)
+                                Text(showProof == false ? "View Proofs" : "Hide Proofs").foregroundColor(.white)
                             }
                             .padding(20)
                             .frame(maxWidth: .infinity).background(Color("Button"))
                             .cornerRadius(15)
                            
-                        }.padding(.top,10).onTapGesture{
-                            
+                        }.padding(.top,10)
+                        if(showProof){
                             ForEach(proofList!.indices, id : \.self){
                                 index in
                                 ProofItemView(proofUrl: proofList![index].url)
+    //                            Image(systemName: "plus")
                                 
                             }
+                         
                         }
+                        
 
                         
                     }
@@ -118,8 +122,11 @@ struct MTaskDetail: View {
             }.onAppear{
                 Task {
                     subtaskList = try await CommonApi().getListOfSubtask(taskId: taskDetail!.taskId!)
+                    print("Auditor ",taskDetail!.auditorAssigned)
                     proofList = try await ProofApi().getProofsList(auditorId: taskDetail!.auditorAssigned )
+                    print(proofList!.count)
                 }
+                
             }
         }
         .padding(24)

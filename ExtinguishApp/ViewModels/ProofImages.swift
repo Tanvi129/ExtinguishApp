@@ -49,7 +49,8 @@ struct PImage : View {
                          .resizable()
                          .aspectRatio(contentMode: .fit)
                  }
-           
+//            Image("MProfile")
+
         }.padding()
     }
 }
