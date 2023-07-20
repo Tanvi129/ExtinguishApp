@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct TaskModel : Identifiable, Decodable {
+struct TaskModel : Identifiable, Decodable , Encodable {
     
     var id : Int?
-    var taskId : Int
+    var taskId : Int?
     var name : String
     var date : String
     var location : loc
@@ -28,13 +28,13 @@ struct TaskModel : Identifiable, Decodable {
     
 }
 
-enum Status : Int , Decodable {
+enum Status : Int , Decodable , Encodable{
     case unassigned
     case inProgress
     case completed
 }
 
-struct loc : Decodable {
+struct loc : Decodable, Encodable {
     var latitude : Double
     var longitude : Double
 }

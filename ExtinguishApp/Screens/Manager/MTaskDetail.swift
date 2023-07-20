@@ -19,7 +19,7 @@ struct MTaskDetail: View {
                     .frame(width: 100, height: 100)
                     .clipShape(Circle())
                 Text("Stock Destroy").font(.title.bold())
-                Text("\(taskDetail!.taskId) | \(taskDetail!.companyDetails.companyName)").font(.title2.weight(.semibold))
+                Text("\(taskDetail!.taskId!) | \(taskDetail!.companyDetails.companyName)").font(.title2.weight(.semibold))
                 HStack(spacing : 10){
                     Text("Assigned to - Mr Vansh Agarwal").font(.title3)
                     Image(systemName: "phone.fill")
@@ -80,7 +80,7 @@ struct MTaskDetail: View {
                 
             }.onAppear{
                 Task {
-                    subtaskList = try await CommonApi().getListOfSubtask(taskId: taskDetail!.taskId)
+                    subtaskList = try await CommonApi().getListOfSubtask(taskId: taskDetail!.taskId!)
                 }
             }
         }

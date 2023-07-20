@@ -82,7 +82,7 @@ struct ATaskDetail: View {
                     .frame(width: 100, height: 100)
                     .clipShape(Circle())
                 Text("Stock Destroy").font(.title.bold())
-                Text("\(taskDetail!.taskId) | \(taskDetail!.companyDetails.companyName)").font(.title2.weight(.semibold))
+                Text("\(taskDetail!.taskId!) | \(taskDetail!.companyDetails.companyName)").font(.title2.weight(.semibold))
                 HStack(spacing : 10){
                     if let managerName = managerDetail?.name {
                         Text("Assigned By - \(managerName)").font(.title3)
@@ -243,7 +243,7 @@ struct ATaskDetail: View {
             }.onAppear{
                 Task {
                     managerDetail = try await ManagerApi().getManagerDetails(id: taskDetail!.managerAssigned)
-                    subtaskList = try await CommonApi().getListOfSubtask(taskId: taskDetail!.taskId)
+                    subtaskList = try await CommonApi().getListOfSubtask(taskId: taskDetail!.taskId!)
 //                    print(taskDetail!.managerAssigned)
                     print(urlResponse)
                     if(urlResponse != "")

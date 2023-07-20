@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MAddTask: View {
+    @EnvironmentObject var network: Network
     @State private var taskName: String = ""
     @State private var taskID: String = ""
     @State private var distributorName: String = ""
@@ -16,12 +17,7 @@ struct MAddTask: View {
     @State private var conractPersonNumber: String = ""
     @State private var subtaskList : [SubtaskSend] = []
     
-    @State var batchno : String = ""
-    @State var productName : String = ""
-    @State var expDate : String = ""
-    @State var boxCount : String = ""
-    @State var pieces : String = ""
-    @State var outer : String = ""
+    
     @State var count = 0
     var body: some View {
         ScrollView(.vertical) {
@@ -54,6 +50,7 @@ struct MAddTask: View {
                 }
                 Button{
                     print("Subtask", subtaskList)
+                    var task = TaskModel(name: taskName, date: "", location: loc(latitude: 16.55, longitude: 145.66), taskStatus: Status.unassigned, auditorAssigned: 0, managerAssigned: network.user!.id, startTime: "09:00:00", endTime: "13:30:00", distributorDetails: DistributorDetails(distributorName: distributorName, distributorContact: conractPersonNumber, distributorAddress: address), companyDetails: CompanyDetails(companyName: "Cipla", salesOfficerName: "Mr M P Gupta", salesOfficerContact: "9412436699"))
                 }label: {
                     HStack{                         Image(systemName: "note.text").foregroundColor(.white)
                         Text("Create Task").foregroundColor(.white)
@@ -75,12 +72,6 @@ struct MAddTask: View {
 struct CreateSubtask: View {
     
     @Binding var count : Int
-//    @Binding var batchno : String
-//    @Binding var productName : String
-//    @Binding var expDate : String
-//    @Binding var boxCount : String
-//    @Binding var pieces : String
-//    @Binding var outer : String
     @Binding var subtask : SubtaskSend
     @Binding var subtaskList : [SubtaskSend]
     @State var batchNo = ""
@@ -88,6 +79,7 @@ struct CreateSubtask: View {
     @State var pieces = ""
     @State var outer = ""
     @State var index : Int
+    @State private var showingAlert = false
     var body: some View {
         
         VStack{
@@ -98,9 +90,7 @@ struct CreateSubtask: View {
                 Button{
                     if(count>0){
                        count = count - 1
-                        var rem = index
-                        index += 1
-                        subtaskList.remove(at: rem)
+                        subtaskList.remove(at: index)
                         
                     }
                 }label: {
@@ -113,6 +103,7 @@ struct CreateSubtask: View {
             }.padding(.vertical,10)
             CustomTextFiled(label: "Batch Number", value: $batchNo)
             CustomTextFiled(label: "Product Name", value: $subtask.stockName)
+            CustomTextFiled(label: "Mfg Date", value: $subtask.mfgDate)
             CustomTextFiled(label: "Expiry Date", value: $subtask.expDate)
             Text("Count").font(.title3)
             HStack{
@@ -125,10 +116,13 @@ struct CreateSubtask: View {
                 subtask.noOfCases = Int(noOfCases) ?? 0
                 subtask.pieces = Int(pieces) ?? 0
                 subtask .outer = Int(outer) ?? 0
+                showingAlert = true
                 
             }label: {
                 Text("Save").font(.title3).foregroundColor(Color("Primary"))
                     .frame(width: 100 , height: 50).background(RoundedRectangle(cornerRadius: 15).fill(Color("Button"))).padding(.bottom,20)
+            } .alert("Subtask Details Saved", isPresented: $showingAlert) {
+                Button("OK", role: .cancel) { }
             }
             
         }

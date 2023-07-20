@@ -89,7 +89,7 @@ struct MAssignedtoATaskCard: View {
         VStack(alignment : .leading){
             VStack(alignment : .leading){
                 Text(taskDetail.name).font(.title2.bold())
-                Text("Task ID - \(taskDetail.taskId)")
+                Text("Task ID - \(taskDetail.taskId!)")
             }
             .padding()
             .frame(maxWidth: .infinity , alignment: .leading)
