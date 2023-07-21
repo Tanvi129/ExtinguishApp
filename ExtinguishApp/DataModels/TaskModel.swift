@@ -23,7 +23,7 @@ struct TaskModel : Identifiable, Decodable , Encodable {
     var distributorDetails : DistributorDetails
     var companyDetails : CompanyDetails
 //    var subtask : [Subtask]?
-    var proof : [String]?
+//    var proof : [String]?
     
     
 }

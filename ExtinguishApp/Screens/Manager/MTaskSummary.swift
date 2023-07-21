@@ -304,7 +304,7 @@ struct TaskCard: View {
                     .padding(20).background( taskDetail.taskStatus == Status.unassigned ? .black : Color("Primary") )
                        
                     VStack(alignment: .leading){
-                        Tag(isAssigned: taskDetail.taskStatus, text: "Task ID : \(taskDetail.taskId)")
+                        Tag(isAssigned: taskDetail.taskStatus, text: "Task ID : \(taskDetail.taskId!)")
                         Tag(isAssigned: taskDetail.taskStatus, text: "Completion Date : \(taskDetail.date)")
                     }
                     .frame(width: 200)

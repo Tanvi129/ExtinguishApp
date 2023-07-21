@@ -16,6 +16,8 @@ struct MAddTask: View {
     @State private var contractPersonName : String = ""
     @State private var conractPersonNumber: String = ""
     @State private var subtaskList : [SubtaskSend] = []
+    @State private var showingAlert = false
+
     
     
     @State var count = 0
@@ -23,7 +25,7 @@ struct MAddTask: View {
         ScrollView(.vertical) {
             VStack{
                 CustomTextFiled(label: "Task Name", value: $taskName)
-                CustomTextFiled(label: "Task ID", value: $taskName)
+//                CustomTextFiled(label: "Task ID", value: $taskName)
                 CustomTextFiled(label: "Distributor Name", value: $distributorName)
                 CustomTextFiled(label: "Address", value: $address)
                 CustomTextFiled(label: "Contact Person Name", value: $contractPersonName)
@@ -50,7 +52,14 @@ struct MAddTask: View {
                 }
                 Button{
                     print("Subtask", subtaskList)
-                    var task = TaskModel(name: taskName, date: "", location: loc(latitude: 16.55, longitude: 145.66), taskStatus: Status.unassigned, auditorAssigned: 0, managerAssigned: network.user!.id, startTime: "09:00:00", endTime: "13:30:00", distributorDetails: DistributorDetails(distributorName: distributorName, distributorContact: conractPersonNumber, distributorAddress: address), companyDetails: CompanyDetails(companyName: "Cipla", salesOfficerName: "Mr M P Gupta", salesOfficerContact: "9412436699"))
+                    var task = TaskModel(name: taskName, date: "2023-06-10", location: loc(latitude: 16.55, longitude: 145.66), taskStatus: Status.unassigned, auditorAssigned: 0, managerAssigned: network.user!.id, startTime: "09:00:00", endTime: "13:30:00", distributorDetails: DistributorDetails(distributorName: distributorName, distributorContact: conractPersonNumber, distributorAddress: address), companyDetails: CompanyDetails(companyName: "Cipla", salesOfficerName: "Mr M P Gupta", salesOfficerContact: "9412436699"))
+                    Task{
+                        let newtaskId = try await ManagerApi().performAddRequestTask(task: task)
+                        for subtask in subtaskList{
+                            try await ManagerApi().performAddRequestSubtask(taskid: newtaskId, subtask: subtask)
+                        }
+                        showingAlert = true
+                    }
                 }label: {
                     HStack{                         Image(systemName: "note.text").foregroundColor(.white)
                         Text("Create Task").foregroundColor(.white)
@@ -61,6 +70,9 @@ struct MAddTask: View {
                     
                    
                 }.padding(.top,10)
+                    .alert("Task Created Successfully", isPresented: $showingAlert) {
+                        Button("OK", role: .cancel) { }
+                    }
                 
                
              

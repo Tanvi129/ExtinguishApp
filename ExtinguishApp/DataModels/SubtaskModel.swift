@@ -20,7 +20,8 @@ struct Subtask : Identifiable, Decodable  {
     var outer : Int
 }
 
-struct SubtaskSend {
+struct SubtaskSend : Encodable , Decodable {
+    var id: Int?
     var stockName : String
     var pid : Int
     var batchNo : Int
