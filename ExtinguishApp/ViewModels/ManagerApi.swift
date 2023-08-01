@@ -34,6 +34,22 @@ class ManagerApi: ObservableObject {
         return auditorList
     }
     
+    func getListOfAuditorsUnderManger(managerId : Int , taskId :Int ) async throws -> [Auditor] {
+        guard let url = URL(string: "http://localhost:3000/myAuditors/\(managerId)/\(taskId)") else { fatalError("Missing URL") }
+//    http://localhost:3000/myAuditors/76543/5
+        
+//            guard let url = URL(string: "http://localhost:3000/myAuditors/76543/5") else { fatalError("Missing URL") }
+    
+            let urlRequest = URLRequest(url: url)
+            let (data, response) = try await URLSession.shared.data(for: urlRequest)
+        
+
+            guard (response as? HTTPURLResponse)?.statusCode == 200 else { fatalError("Error while fetching data") }
+            print("Data ", data)
+        let auditorList = try JSONDecoder().decode([Auditor].self, from: data)
+        return auditorList
+    }
+
     func getListOfTaskUnderManger(id : Int ) async throws -> [TaskModel] {
         print("Task started tasklist")
         guard let url = URL(string: "http://localhost:3000/tasks/manager/\(id)") else { fatalError("Missing URL") }

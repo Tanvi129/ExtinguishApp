@@ -228,11 +228,11 @@ struct ATaskDetail: View {
                                 }
                         
                                 
-                        URLImage(URL(string:urlConstructor.create())! ) { image in
-                            image
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                        }
+//                        URLImage(URL(string:urlConstructor.create())! ) { image in
+//                            image
+//                                .resizable()
+//                                .aspectRatio(contentMode: .fit)
+//                        }
                     }
                     
                 }

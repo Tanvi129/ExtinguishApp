@@ -14,7 +14,8 @@ struct MTaskSummary: View {
     @State var completedTasksList : [TaskModel]?
     @State var inProgressTasksList : [TaskModel]?
     @State var selectedTaskDetails : TaskModel?
-
+    @State var managerID : Int = 2
+//    @State var taskID : Int = 5
     @StateObject var appointmentViewModel: DateViewModel = DateViewModel()
 
     
@@ -125,7 +126,20 @@ struct MTaskSummary: View {
                                     .padding()
                                     
                                 }
-                    NavigationLink(destination: MAddTask() , isActive: $triggerAddTask) { EmptyView() }
+                    let managerIDBinding = Binding<Int>(
+                        get: { Network().user?.id ?? 76543 },
+                        set: { _ in }
+                    )
+                    
+                    NavigationLink(
+                        destination: MAddTask(managerID: managerIDBinding, taskID: Binding(
+                            get: { selectedTaskDetails?.taskId ?? 5 },
+                            set: { _ in }
+                        )),
+                        isActive: $triggerAddTask
+                    ) {
+                        EmptyView()
+                    }
                 }
             }
             

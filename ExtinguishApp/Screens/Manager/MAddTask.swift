@@ -9,15 +9,17 @@ import SwiftUI
 
 struct MAddTask: View {
     @EnvironmentObject var network: Network
+    @Binding var managerID : Int
+    @Binding var taskID : Int
     @State private var taskName: String = ""
-    @State private var taskID: String = ""
+//    @State private var taskID: String = ""
     @State private var distributorName: String = ""
     @State private var address: String = ""
     @State private var contractPersonName : String = ""
     @State private var conractPersonNumber: String = ""
     @State private var subtaskList : [SubtaskSend] = []
     @State private var showingAlert = false
-
+    @State private var auditorAssigned:String = ""
     
     
     @State var count = 0
@@ -30,6 +32,9 @@ struct MAddTask: View {
                 CustomTextFiled(label: "Address", value: $address)
                 CustomTextFiled(label: "Contact Person Name", value: $contractPersonName)
                 CustomTextFiled(label: "Contact Person Number", value: $conractPersonNumber)
+//                CustomTextFiled(label: "Auditor Assigned ", value: $auditorAssigned)
+                CustomTextFiledAuditor(label: "Auditor", value: .constant(""), managerIdd: $managerID, taskIdd: $taskID)
+                
                 HStack{
                     Text("Stock Details").font(.title2.weight(.semibold))
                     Spacer()
@@ -52,7 +57,7 @@ struct MAddTask: View {
                 }
                 Button{
                     print("Subtask", subtaskList)
-                    var task = TaskModel(name: taskName, date: "2023-06-10", location: loc(latitude: 16.55, longitude: 145.66), taskStatus: Status.unassigned, auditorAssigned: 0, managerAssigned: network.user!.id, startTime: "09:00:00", endTime: "13:30:00", distributorDetails: DistributorDetails(distributorName: distributorName, distributorContact: conractPersonNumber, distributorAddress: address), companyDetails: CompanyDetails(companyName: "Cipla", salesOfficerName: "Mr M P Gupta", salesOfficerContact: "9412436699"))
+                    var task = TaskModel(name: taskName, date: "2023-06-10", location: loc(latitude: 16.55, longitude: 145.66), taskStatus: Status.unassigned, auditorAssigned: Int($auditorAssigned.wrappedValue) ?? 0, managerAssigned: network.user!.id, startTime: "09:00:00", endTime: "13:30:00", distributorDetails: DistributorDetails(distributorName: distributorName, distributorContact: conractPersonNumber, distributorAddress: address), companyDetails: CompanyDetails(companyName: "Cipla", salesOfficerName: "Mr M P Gupta", salesOfficerContact: "9412436699"))
                     Task{
                         let newtaskId = try await ManagerApi().performAddRequestTask(task: task)
                         for subtask in subtaskList{
@@ -142,7 +147,14 @@ struct CreateSubtask: View {
     }
 }
 struct MAddTask_Previews: PreviewProvider {
+//    @State var managerID : Int = 2
+//    @State var taskID : Int = 5
     static var previews: some View {
-        MAddTask()
+        let managerID = Binding<Int>(get: { 76543 }, set: { _ in })
+        let taskID = Binding<Int>(get: { 5 }, set: { _ in })
+             
+             return MAddTask(managerID: managerID, taskID: taskID)
+//        MAddTask(managerID: $managerID, taskID: $taskID)
     }
 }
+//ContentVieww
