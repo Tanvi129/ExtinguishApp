@@ -137,6 +137,7 @@ struct ATaskDetail: View {
                         ForEach( subtaskList!.indices , id: \.self){
                             index in SubtaskView(subtaskID: "\(subtaskList![index].subtaskId)", productName: subtaskList![index].stockName, batchNumber: "\(subtaskList![index].batchNo)", expiryDate: subtaskList![index].expDate, boxCount: subtaskList![index].noOfCases, pieceCount: subtaskList![index].pieces , outer: subtaskList![index].outer)
                         }
+
 //                        Button{
 //                            print("selected")
 //                            let image = loadImage()
@@ -176,6 +177,7 @@ struct ATaskDetail: View {
                             print("selected")
                             showImagePicker = true
                         } label: {
+
                             HStack{
                                 Image(systemName: "square.and.arrow.up").foregroundColor(.white)
                                 Text("Upload Proofs").foregroundColor(.white)
@@ -183,6 +185,7 @@ struct ATaskDetail: View {
                             .padding(20)
                             .frame(maxWidth: .infinity) .background(Color("Button"))
                             .cornerRadius(15)
+
                         }
                         .sheet(isPresented: $showImagePicker) {
                             ImagePicker(image: $inputImage)
@@ -226,6 +229,7 @@ struct ATaskDetail: View {
                                 .frame(width: 100, height: 100)
                                 .onChange(of: inputImage){ _ in loadImages()}
                                 }
+
                         
                                 
 //                        URLImage(URL(string:urlConstructor.create())! ) { image in

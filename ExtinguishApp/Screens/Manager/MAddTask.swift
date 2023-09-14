@@ -17,11 +17,13 @@ struct MAddTask: View {
     @State private var address: String = ""
     @State private var contractPersonName : String = ""
     @State private var conractPersonNumber: String = ""
+
     @State private var subtaskList : [SubtaskSend] = []
     @State private var showingAlert = false
     @State private var auditorAssigned:String = ""
     
     
+
     @State var count = 0
     var body: some View {
         ScrollView(.vertical) {
@@ -31,17 +33,20 @@ struct MAddTask: View {
                 CustomTextFiled(label: "Distributor Name", value: $distributorName)
                 CustomTextFiled(label: "Address", value: $address)
                 CustomTextFiled(label: "Contact Person Name", value: $contractPersonName)
-                CustomTextFiled(label: "Contact Person Number", value: $conractPersonNumber)
+
 //                CustomTextFiled(label: "Auditor Assigned ", value: $auditorAssigned)
                 CustomTextFiledAuditor(label: "Auditor", value: .constant(""), managerIdd: $managerID, taskIdd: $taskID)
                 
+
                 HStack{
                     Text("Stock Details").font(.title2.weight(.semibold))
                     Spacer()
                     Button {
                         count = count + 1
+
                         var subtask : SubtaskSend = SubtaskSend(stockName: "", pid: 0, batchNo: 0, mfgDate: "", expDate: "", noOfCases: 0, pieces: 0, outer: 0)
                         subtaskList.append(subtask)
+
                     } label: {
                         Image(systemName: "plus")
                             .resizable()
@@ -51,6 +56,7 @@ struct MAddTask: View {
                     }
                     
                 }.padding(.vertical,10)
+
                 ForEach( subtaskList.indices, id: \.self){ index in
 //                    CreateSubtask(count: $count, batchno: $batchno , productName: $productName, expDate: $expDate , boxCount: $boxCount , pieces: $pieces, outer: $outer, index: index)
                     CreateSubtask(count: $count, subtask: $subtaskList[index], subtaskList: $subtaskList, index: index)
@@ -67,6 +73,7 @@ struct MAddTask: View {
                     }
                 }label: {
                     HStack{                         Image(systemName: "note.text").foregroundColor(.white)
+
                         Text("Create Task").foregroundColor(.white)
                     }
                     .padding(20)
@@ -75,9 +82,11 @@ struct MAddTask: View {
                     
                    
                 }.padding(.top,10)
+
                     .alert("Task Created Successfully", isPresented: $showingAlert) {
                         Button("OK", role: .cancel) { }
                     }
+
                 
                
              
@@ -87,6 +96,7 @@ struct MAddTask: View {
     }
 }
 struct CreateSubtask: View {
+
     
     @Binding var count : Int
     @Binding var subtask : SubtaskSend
@@ -103,12 +113,15 @@ struct CreateSubtask: View {
             
             HStack{
                 Text("Subtask \(index)").font(.title3.weight(.semibold))
+
                 Spacer()
                 Button{
                     if(count>0){
                        count = count - 1
+
                         subtaskList.remove(at: index)
                         
+
                     }
                 }label: {
                     Image(systemName: "minus")
@@ -118,6 +131,7 @@ struct CreateSubtask: View {
                 }
                 
             }.padding(.vertical,10)
+
             CustomTextFiled(label: "Batch Number", value: $batchNo)
             CustomTextFiled(label: "Product Name", value: $subtask.stockName)
             CustomTextFiled(label: "Mfg Date", value: $subtask.mfgDate)
@@ -142,6 +156,7 @@ struct CreateSubtask: View {
                 Button("OK", role: .cancel) { }
             }
             
+
         }
         
     }

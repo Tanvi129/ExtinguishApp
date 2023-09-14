@@ -90,6 +90,7 @@ struct MTaskDetail: View {
                             index in SubtaskView(subtaskID: "\(subtaskList![index].subtaskId)", productName: subtaskList![index].stockName, batchNumber: "\(subtaskList![index].batchNo)", expiryDate: subtaskList![index].expDate, boxCount: subtaskList![index].noOfCases, pieceCount: subtaskList![index].pieces , outer: subtaskList![index].outer)
                         }
                         Button{
+
                             showProof.toggle()
                         }label: {
                             HStack{
@@ -111,6 +112,7 @@ struct MTaskDetail: View {
                          
                         }
                         
+
 
                         
                     }
