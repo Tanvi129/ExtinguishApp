@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    
     @EnvironmentObject var network : Network
     
     
@@ -35,3 +36,5 @@ struct ContentView_Previews: PreviewProvider {
         ContentView() 
     }
 }
+
+
