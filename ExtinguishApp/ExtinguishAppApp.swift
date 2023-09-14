@@ -14,7 +14,8 @@ struct ExtinguishAppApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     var body: some Scene {
         WindowGroup {
-            ContentView().environmentObject(network)
+//            ContentView().environmentObject(network)
+            LandingPage().environmentObject(network)
         }
     }
 }
